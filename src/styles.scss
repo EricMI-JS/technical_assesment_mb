@@ -26,7 +26,7 @@ html {
 
 body {
     font-size: 2rem;
-    font-family: var(--main-font);
+    font-family: var(--main-font) !important;
     line-height: 1.5;
     background-color: var(--background-color);
 }
@@ -61,6 +61,7 @@ a {
     font-size: 20px;
     width: 100%;
     display: block;
+    font-family: var(--main-font) !important;
 }
 
 .secondary-button {
@@ -77,4 +78,5 @@ a {
     padding: 13.82px 6.91px; 
     display: flex;
     align-items: center;
+    font-family: var(--main-font) !important;
 }

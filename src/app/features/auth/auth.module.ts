@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthRoutingModule } from './auth-routing.module';
+import { PrimeNGModule } from '../../shared/prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AuthRoutingModule } from './auth-routing.module';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PrimeNGModule
   ],
   providers: [AuthService]
 })

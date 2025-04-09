@@ -1,41 +1,49 @@
 <div class="container">
     <h2 class="title">Inicia sesión</h2>
 
-    <form action="" class="form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
         <div class="form-group">
             <label for="email">Email o nombre de usuario</label>
-            <input type="text" id="email" name="email" placeholder="Email o nombre de usuario">
+            <span class="p-input-icon-left">
+                <input type="text" pInputText id="email" formControlName="email" placeholder="Email o nombre de usuario">
+            </span>
         </div>
 
         <div class="form-group">
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" placeholder="Contraseña">
+            <div class="password-container">
+                <input [type]="showPassword ? 'text' : 'password'" pInputText id="password" formControlName="password" placeholder="Contraseña">
+                <i class="pi" [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'" (click)="togglePasswordVisibility()"></i>
+            </div>
         </div>
 
-        <button class="remember-me">Recuerdame</button>
+        <div class="switch-container">
+            <p-inputSwitch formControlName="rememberMe"></p-inputSwitch>
+            <label>Recuerdame</label>
+        </div>
 
-        <button class="primary-button">Iniciar sesión</button>
+        <button pButton type="submit" class="primary-button">Iniciar sesión</button>
         <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
     </form>
 
     <div class="no-account">
         <p class="no-account-text">¿No tienes una cuenta?</p>
-        <button class="secondary-button">Registrarse</button>
+        <button pButton type="button" class="secondary-button">Registrarse</button>
     </div>
 
     <div class="social-login">
         <p class="social-login-text">Inicia sesión con tus redes sociales</p>
 
         <div class="social-icons">
-            <button class="social-icon-button google">
+            <button pButton type="button" class="social-icon-button google">
                 <img src="assets/icons/google.svg" alt="Google">
             </button>
 
-            <button class="social-icon-button facebook">
+            <button pButton type="button" class="social-icon-button facebook">
                 <img src="assets/icons/facebook.svg" alt="Facebook">
             </button>
 
-            <button class="social-icon-button apple">
+            <button pButton type="button" class="social-icon-button apple">
                 <img src="assets/icons/apple.svg" alt="Apple">
             </button>
         </div>
