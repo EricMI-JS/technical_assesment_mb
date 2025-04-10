@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PrimeNGModule } from './prime-ng/prime-ng.module';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
+import { BottomMenuComponent } from './components/bottom-menu/bottom-menu.component';
 
 @NgModule({
   declarations: [
-    MobileMenuComponent
+    MobileMenuComponent,
+    BottomMenuComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.compon
     PrimeNGModule
   ],
   exports: [
-    MobileMenuComponent
+    MobileMenuComponent,
+    BottomMenuComponent
   ]
 })
 export class SharedModule { } 

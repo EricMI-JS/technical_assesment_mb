@@ -1,0 +1,11 @@
+<div class="bottom-menu">
+  <div *ngFor="let item of menuItems" 
+       class="menu-item" 
+       [class.active]="item.active"
+       (click)="navigate(item.route)">
+    <div class="icon-container">
+      <img [src]="item.icon" alt="{{ item.label }}" class="menu-icon">
+    </div>
+    <span class="menu-label">{{ item.label }}</span>
+  </div>
+</div> 
