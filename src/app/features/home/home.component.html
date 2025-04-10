@@ -7,6 +7,13 @@
             <h2>Categorías</h2>
             <app-categories-carousel></app-categories-carousel>
         </section>
-    </div>
 
+        <section class="featured-products-section">
+            <app-products-grid 
+                title="Ofertas"
+                viewAllLink="/ofertas" 
+                [limit]="4">
+            </app-products-grid>
+        </section>
+    </div>
 </div>

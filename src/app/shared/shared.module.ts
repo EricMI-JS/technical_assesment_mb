@@ -8,6 +8,9 @@ import { BottomMenuComponent } from './components/bottom-menu/bottom-menu.compon
 import { BannerCarouselComponent } from './components/banner-carousel/banner-carousel.component';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { CategoriesCarouselComponent } from './components/categories-carousel/categories-carousel.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { OffersCarouselComponent } from './components/offers-carousel/offers-carousel.component';
+import { ProductsGridComponent } from './components/products-grid/products-grid.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { CategoriesCarouselComponent } from './components/categories-carousel/ca
     BottomMenuComponent,
     BannerCarouselComponent,
     CategoryCardComponent,
-    CategoriesCarouselComponent
+    CategoriesCarouselComponent,
+    ProductCardComponent,
+    OffersCarouselComponent,
+    ProductsGridComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +34,10 @@ import { CategoriesCarouselComponent } from './components/categories-carousel/ca
     BottomMenuComponent,
     BannerCarouselComponent,
     CategoryCardComponent,
-    CategoriesCarouselComponent
+    CategoriesCarouselComponent,
+    ProductCardComponent,
+    OffersCarouselComponent,
+    ProductsGridComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

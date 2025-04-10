@@ -1,0 +1,20 @@
+<div class="products-grid-container">
+  <div class="section-header" *ngIf="title">
+    <h2>{{title}}</h2>
+    <a *ngIf="showViewAll" class="view-all" [routerLink]="viewAllLink">Ver todos</a>
+  </div>
+  
+  <div class="products-grid">
+    <div class="product-item" *ngFor="let product of displayProducts">
+      <app-product-card
+        [id]="product.id"
+        [image]="product.image"
+        [title]="product.title"
+        [price]="product.price"
+        [originalPrice]="product.originalPrice"
+        [rating]="product.rating"
+        [isFavorite]="product.isFavorite">
+      </app-product-card>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,29 @@
+<div class="product-card">
+  <div class="product-header">
+    <div class="product-header-top">
+      <div class="sku">SKU: {{id}}</div>
+      <button class="favorite-button" (click)="toggleFavorite()">
+        <img *ngIf="isFavorite" src="assets/icons/favorite.svg" alt="Favorito" class="favorite-icon favorite-active">
+        <img *ngIf="!isFavorite" src="assets/icons/favorite.svg" alt="Favorito" class="favorite-icon">
+      </button>
+    </div>
+
+    <div class="product-image">
+      <img [src]="image" [alt]="title">
+    </div>
+
+    <div class="product-rating">
+      <span class="rating-star">
+        <i class="pi pi-star-fill"></i>
+      </span>
+      <span class="rating-value">{{rating.value}}</span>
+    </div>
+  </div>
+
+  <div class="product-title">{{title}}</div>
+
+  <div class="product-price">
+    <div *ngIf="originalPrice" class="original-price">{{formatPrice(originalPrice)}}</div>
+    <div class="current-price">{{formatPrice(price)}}</div>
+  </div>
+</div>
