@@ -1,0 +1,11 @@
+<div class="categories-carousel">
+  <swiper-container #categoriesSwiperContainer init="false">
+    <swiper-slide *ngFor="let category of categories">
+      <app-category-card 
+        [image]="category.image" 
+        [title]="category.title" 
+        [link]="category.link">
+      </app-category-card>
+    </swiper-slide>
+  </swiper-container>
+</div> 

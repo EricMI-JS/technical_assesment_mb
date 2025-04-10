@@ -6,12 +6,16 @@ import { PrimeNGModule } from './prime-ng/prime-ng.module';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
 import { BottomMenuComponent } from './components/bottom-menu/bottom-menu.component';
 import { BannerCarouselComponent } from './components/banner-carousel/banner-carousel.component';
+import { CategoryCardComponent } from './components/category-card/category-card.component';
+import { CategoriesCarouselComponent } from './components/categories-carousel/categories-carousel.component';
 
 @NgModule({
   declarations: [
     MobileMenuComponent,
     BottomMenuComponent,
-    BannerCarouselComponent
+    BannerCarouselComponent,
+    CategoryCardComponent,
+    CategoriesCarouselComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +26,9 @@ import { BannerCarouselComponent } from './components/banner-carousel/banner-car
   exports: [
     MobileMenuComponent,
     BottomMenuComponent,
-    BannerCarouselComponent
+    BannerCarouselComponent,
+    CategoryCardComponent,
+    CategoriesCarouselComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

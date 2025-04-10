@@ -1,0 +1,18 @@
+.categories-carousel {
+  width: 100%;
+  overflow: hidden;
+  
+  swiper-container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.25rem 0;
+    --swiper-theme-color: #ddff00;
+  }
+  
+  swiper-slide {
+    width: auto;
+    height: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+} 

@@ -1,0 +1,44 @@
+.category-card {
+  width: 130px;
+  height: 182px;
+  overflow: hidden;
+  margin: 0;
+  
+  a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .category-image {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid #F2F2F2;
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+  
+  .category-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: 6px;
+  }
+  
+  .category-action {
+    font-size: 1.2rem;
+    color: #666666;
+    text-align: left;
+  }
+}

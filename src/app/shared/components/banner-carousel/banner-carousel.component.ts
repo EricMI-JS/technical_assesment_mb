@@ -44,9 +44,7 @@ export class BannerCarouselComponent implements OnInit, AfterViewInit {
     const swiperParams = {
       slidesPerView: 1,
       spaceBetween: 10,
-      pagination: {
-        clickable: true,
-      },
+      pagination: false,
       autoplay: {
         delay: 3000,
         disableOnInteraction: false

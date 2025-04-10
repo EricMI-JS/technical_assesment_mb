@@ -1,17 +1,24 @@
-.home-container {
+.home {
+  padding-bottom: 80px;
+}
 
+.home-container {
   section {
     margin-bottom: 2rem;
   }
   
   h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
     font-weight: 600;
     color: #333;
   }
 }
 
-.featured-section, .categories-section {
-  padding: 0 0.5rem;
-} 
+.banner-section {
+  margin-bottom: 1.5rem;
+}
+
+.categories-section {
+  padding-bottom: 2rem;
+}
