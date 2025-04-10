@@ -1,0 +1,11 @@
+<div class="banner-carousel-container">
+  <swiper-container #swiperContainer init="false">
+    <swiper-slide *ngFor="let banner of banners">
+      <div class="banner-slide">
+        <a [routerLink]="banner.link">
+          <img [src]="banner.imageUrl" [alt]="banner.alt" class="banner-image">
+        </a>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div> 
