@@ -8,7 +8,9 @@
             <div class="search-bar">
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input type="text" pInputText placeholder="Bujía Mazda 3 de 2015" />
+                    <input type="text" pInputText [(ngModel)]="searchQuery" 
+                           placeholder="Bujía Mazda 3 de 2015" 
+                           (keyup.enter)="search()" />
                 </span>
             </div>
 
@@ -25,9 +27,30 @@
             </div>
         </div>
 
-        <button class="location-button">
+        <button class="location-button" (click)="updateCP(userCP)">
             <i class="pi pi-map-marker"></i>
             <span>Enviar a CP {{ userCP }}</span>
         </button>
+    </div>
+
+    <div class="side-menu" [class.open]="showMenu">
+        <div class="menu-overlay" (click)="toggleMenu()"></div>
+        <div class="menu-content">
+            <div class="menu-header">
+                <h3>Menú</h3>
+                <button class="close-button" (click)="toggleMenu()">
+                    <i class="pi pi-times"></i>
+                </button>
+            </div>
+            
+            <div class="menu-items">
+                <ng-container *ngFor="let item of menuItems">
+                    <div class="menu-item" (click)="navigate(item.route)">
+                        <i [class]="item.icon"></i>
+                        <span>{{ item.label }}</span>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
     </div>
 </div>

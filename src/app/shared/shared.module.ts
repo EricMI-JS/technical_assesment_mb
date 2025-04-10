@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { PrimeNGModule } from './prime-ng/prime-ng.module';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
 
@@ -11,6 +12,7 @@ import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.compon
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     PrimeNGModule
   ],
   exports: [

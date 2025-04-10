@@ -9,6 +9,16 @@ import { Router } from '@angular/router';
 export class MobileMenuComponent implements OnInit {
   showMenu = false;
   userCP = '42010';
+  searchQuery = '';
+
+  menuItems = [
+    { label: 'Inicio', icon: 'pi pi-home', route: '/home' },
+    { label: 'Categorías', icon: 'pi pi-th-large', route: '/categories' },
+    { label: 'Mis Pedidos', icon: 'pi pi-shopping-bag', route: '/orders' },
+    { label: 'Favoritos', icon: 'pi pi-heart', route: '/favorites' },
+    { label: 'Mi Cuenta', icon: 'pi pi-user', route: '/account' },
+    { label: 'Ayuda', icon: 'pi pi-question-circle', route: '/help' }
+  ];
 
   constructor(private router: Router) { }
 
@@ -17,14 +27,30 @@ export class MobileMenuComponent implements OnInit {
 
   toggleMenu(): void {
     this.showMenu = !this.showMenu;
+    
+    if (this.showMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   }
 
   navigate(route: string): void {
     this.router.navigate([route]);
     this.showMenu = false;
+    document.body.style.overflow = 'auto';
+  }
+
+  search(): void {
+    if (this.searchQuery && this.searchQuery.trim().length > 0) {
+      this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
+    }
   }
 
   updateCP(cp: string): void {
-    this.userCP = cp;
+    const newCP = prompt('Ingresa tu código postal:', cp);
+    if (newCP && newCP.trim() !== '') {
+      this.userCP = newCP.trim();
+    }
   }
 } 
