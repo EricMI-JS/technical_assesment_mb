@@ -1,0 +1,33 @@
+<div class="mobile-menu-container">
+    <div class="menu-header-container">
+        <div class="menu-header">
+            <button class="menu-button" (click)="toggleMenu()">
+                <i class="pi pi-bars"></i>
+            </button>
+
+            <div class="search-bar">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="text" pInputText placeholder="Bujía Mazda 3 de 2015" />
+                </span>
+            </div>
+
+            <div class="right-icons">
+                <button class="notification-button">
+                    <i class="pi pi-bell"></i>
+                    <span class="notification-badge"></span>
+                </button>
+
+                <button class="cart-button">
+                    <i class="pi pi-shopping-cart"></i>
+                    <span class="cart-badge">1</span>
+                </button>
+            </div>
+        </div>
+
+        <button class="location-button">
+            <i class="pi pi-map-marker"></i>
+            <span>Enviar a CP {{ userCP }}</span>
+        </button>
+    </div>
+</div>
