@@ -1,0 +1,106 @@
+::ng-deep .payment-error-dialog {
+  .p-dialog-content {
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #e8fb02;
+  }
+  
+  .p-dialog {
+    max-height: 90vh;
+    overflow: hidden;
+  }
+}
+
+.payment-error {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  
+  .error-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+    padding: 4px;
+  }
+
+  .error-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 16px 0 32px;
+    text-align: center;
+  }
+
+  .error-message {
+    margin-bottom: 32px;
+  }
+
+  .error-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
+  .error-description {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+  }
+
+  .error-icon {
+    margin-bottom: 16px;
+  }
+
+  .icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    
+    .pi-exclamation-circle {
+      font-size: 48px;
+      color: #888;
+    }
+  }
+
+  .error-actions {
+    width: 100%;
+    padding: 16px 0;
+  }
+
+  .retry-button {
+    width: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #333;
+    }
+  }
+} 

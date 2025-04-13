@@ -72,7 +72,8 @@ export class CartComponent implements OnInit {
   selectedProduct: CartItem | null = null;
   isProductSummaryVisible: boolean = false;
   
-  showPurchaseConfirmation: boolean = true;
+  showPurchaseConfirmation: boolean = false;
+  showPaymentError: boolean = true;
   orderItems: OrderItem[] = [];
   paymentDetails: PaymentDetails = {
     method: 'VISA',
@@ -140,6 +141,20 @@ export class CartComponent implements OnInit {
     console.log('Procediendo al checkout con producto:', this.selectedProduct);
     this.hideProductSummary();
     this.prepareOrderItems();
+    
+    // Simulamos un pago aleatorio (éxito o error)
+    const isPaymentSuccessful = Math.random() > 0.5;
+    
+    if (isPaymentSuccessful) {
+      this.showPurchaseConfirmation = true;
+    } else {
+      this.showPaymentError = true;
+    }
+  }
+  
+  retryPayment(): void {
+    this.showPaymentError = false;
+    // Simulamos un segundo intento exitoso
     this.showPurchaseConfirmation = true;
   }
   

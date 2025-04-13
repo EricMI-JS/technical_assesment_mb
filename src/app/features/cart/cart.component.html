@@ -44,4 +44,9 @@
     [shippingDetails]="shippingDetails"
     (continueShopping)="continueShopping()">
   </app-purchase-confirmation>
+  
+  <app-payment-error
+    [(visible)]="showPaymentError"
+    (retry)="retryPayment()">
+  </app-payment-error>
 </div> 
