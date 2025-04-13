@@ -9,6 +9,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { DropdownModule } from 'primeng/dropdown';
 import { MessageService } from 'primeng/api';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MessageService } from 'primeng/api';
     DialogModule,
     ToastModule,
     CheckboxModule,
-    InputSwitchModule
+    InputSwitchModule,
+    DropdownModule
   ],
   exports: [
     ButtonModule,
@@ -32,7 +34,8 @@ import { MessageService } from 'primeng/api';
     DialogModule,
     ToastModule,
     CheckboxModule,
-    InputSwitchModule
+    InputSwitchModule,
+    DropdownModule
   ],
   providers: [
     MessageService

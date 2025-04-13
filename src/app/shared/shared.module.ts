@@ -43,7 +43,8 @@ import { OfficialStoresComponent } from './components/official-stores/official-s
     OffersCarouselComponent,
     ProductsGridComponent,
     StoreCardComponent,
-    OfficialStoresComponent
+    OfficialStoresComponent,
+    PrimeNGModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

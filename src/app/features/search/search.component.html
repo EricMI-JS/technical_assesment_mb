@@ -1,0 +1,52 @@
+<div class="search-page-container">
+  <div class="filters">
+    <form #filterForm="ngForm">
+      <div class="toggle-filters">
+        <div class="toggle-filter">
+          <span>Llega mañana</span>
+          <p-inputSwitch [(ngModel)]="nextDayDelivery" name="nextDayDelivery" styleClass="small-switch"></p-inputSwitch>
+        </div>
+        
+        <div class="toggle-filter">
+          <span>Envío gratis</span>
+          <p-inputSwitch [(ngModel)]="freeShipping" name="freeShipping" styleClass="small-switch"></p-inputSwitch>
+        </div>
+        
+        <div class="toggle-filter">
+          <span>Tiendas oficiales</span>
+          <p-inputSwitch [(ngModel)]="officialStores" name="officialStores" styleClass="small-switch"></p-inputSwitch>
+        </div>
+      </div>
+      
+      <div class="dropdown-filters">
+        <div class="dropdown-filter">
+          <p-dropdown 
+            [options]="brands" 
+            [(ngModel)]="selectedBrand" 
+            placeholder="Marcas" 
+            [showClear]="true"
+            styleClass="minimal-dropdown"
+            name="brandDropdown">
+          </p-dropdown>
+        </div>
+        
+        <div class="dropdown-filter">
+          <p-dropdown 
+            [options]="sortOptions" 
+            [(ngModel)]="selectedSortOption" 
+            placeholder="Ordenar por" 
+            styleClass="minimal-dropdown"
+            name="sortDropdown">
+          </p-dropdown>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <app-search-products-grid
+    [nextDayDelivery]="nextDayDelivery"
+    [freeShipping]="freeShipping"
+    [officialStores]="officialStores"
+    [selectedBrand]="selectedBrand">
+  </app-search-products-grid>
+</div> 
