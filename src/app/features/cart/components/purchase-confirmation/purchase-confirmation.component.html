@@ -1,0 +1,92 @@
+<p-dialog 
+  [(visible)]="visible" 
+  [modal]="true" 
+  [draggable]="false" 
+  [resizable]="false"
+  [style]="{width: '95%', maxWidth: '400px'}"
+  [showHeader]="false"
+  [closable]="false"
+  [closeOnEscape]="false"
+  [baseZIndex]="1000"
+  styleClass="purchase-confirmation-dialog">
+  
+  <div class="purchase-confirmation">
+    <div class="modal-header">
+      <button class="close-button" (click)="hideModal()">
+        <i class="pi pi-times"></i>
+      </button>
+      <div class="header-message">
+        <p class="thanks-message">¡Gracias por comprar en <span class="mercado">mercado</span>!</p>
+        <p class="congrats-message">Tu pago ha procesado con éxito.</p>
+      </div>
+    </div>
+
+    <div class="thank-you-section">
+      <div class="thank-you-illustration">
+        <div class="illustration-persons">
+          <img src="assets/images/thanks-illustration.png" alt="Gracias por tu compra" class="illustration-image">
+        </div>
+        <h2 class="thank-you-title">GRACIAS</h2>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="order-summary">
+      <h3 class="summary-title">Resumen de compra</h3>
+      
+      <div class="order-items">
+        <div class="item" *ngFor="let item of items; let i = index">
+          <span class="item-quantity">({{item.quantity}})</span>
+          <span class="item-price">$ {{item.price.toFixed(2)}} MXN</span>
+        </div>
+      </div>
+
+      <div class="order-totals">
+        <div class="total-row subtotal">
+          <span class="label">Subtotal</span>
+          <span class="amount">$ {{subtotal.toFixed(2)}} MXN</span>
+        </div>
+        <div class="total-row shipping">
+          <span class="label">Envío</span>
+          <span class="amount">$ {{shipping.toFixed(2)}} MXN</span>
+        </div>
+        <div class="total-row total">
+          <span class="label">TOTAL</span>
+          <span class="amount">$ {{total.toFixed(2)}} MXN</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-info">
+      <h4 class="section-title">Pago</h4>
+      <div class="payment-method">
+        <div class="card-info">
+          <span>$ {{total.toFixed(2)}}</span>
+          <span class="card-number" *ngIf="payment.cardNumber">Visa Débito **** {{payment.cardNumber.slice(-4)}}</span>
+          <span class="card-number" *ngIf="!payment.cardNumber">Visa Débito **** 1111</span>
+          <span class="payment-status">Pago aprobado</span>
+        </div>
+        <div class="card-logo">
+          <img src="assets/images/visa-logo.png" alt="VISA" class="visa-logo">
+        </div>
+      </div>
+    </div>
+
+    <div class="shipping-info">
+      <h4 class="section-title">Envío</h4>
+      <p class="address">{{shippingDetails.address}}</p>
+      <p class="city-country">{{shippingDetails.city}} en {{shippingDetails.country}}</p>
+      <p class="delivery-time">1 unidad</p>
+    </div>
+
+    <div class="continue-shopping">
+      <button 
+        pButton 
+        class="continue-button" 
+        label="Seguir comprando" 
+        (click)="continueShoppingClick()">
+      </button>
+    </div>
+  </div>
+</p-dialog> 

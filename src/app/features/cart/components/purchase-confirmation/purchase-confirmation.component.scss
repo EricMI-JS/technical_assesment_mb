@@ -1,0 +1,250 @@
+::ng-deep .purchase-confirmation-dialog {
+  .p-dialog-content {
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .p-dialog {
+    max-height: 90vh;
+    overflow: hidden;
+  }
+}
+
+.purchase-confirmation {
+  max-height: 80vh;
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+  
+  /* Para Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f5f5f5;
+  
+  .modal-header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 5;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+    padding: 4px;
+    z-index: 1;
+  }
+
+  .header-message {
+    width: 100%;
+    padding: 0 24px;
+    font-size: 14px;
+  }
+
+  .thanks-message {
+    margin: 0 0 4px 0;
+    font-weight: 500;
+  }
+
+  .mercado {
+    font-weight: bold;
+  }
+
+  .congrats-message {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+  }
+
+  .thank-you-section {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thank-you-illustration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .illustration-persons {
+    width: 120px;
+    height: 80px;
+    position: relative;
+  }
+
+  .illustration-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .thank-you-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0 0;
+    color: #333;
+    background-color: #e8fb02;
+    padding: 4px 24px;
+    border-radius: 2px;
+  }
+
+  .divider {
+    width: 90%;
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 8px auto;
+  }
+
+  .order-summary {
+    padding: 16px 24px;
+  }
+
+  .summary-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+    color: #333;
+    text-align: center;
+  }
+
+  .order-items {
+    margin-bottom: 16px;
+  }
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .item-quantity {
+    color: #666;
+  }
+
+  .item-price {
+    font-weight: 500;
+  }
+
+  .order-totals {
+    font-size: 14px;
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .total-row.total {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 12px;
+  }
+
+  .payment-info, .shipping-info {
+    padding: 12px 24px;
+  }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    color: #333;
+  }
+
+  .payment-method {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+
+  .card-number {
+    margin: 4px 0;
+  }
+
+  .payment-status {
+    color: #3cb371;
+    font-size: 12px;
+  }
+
+  .card-logo {
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .visa-logo {
+    width: 100%;
+    height: auto;
+    max-width: 60px;
+  }
+
+  .address, .city-country, .delivery-time {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  .continue-shopping {
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .continue-button {
+    width: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #333;
+    }
+  }
+} 

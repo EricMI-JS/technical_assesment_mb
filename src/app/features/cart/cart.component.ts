@@ -13,6 +13,25 @@ interface CartItem {
   availability: number;
 }
 
+interface OrderItem {
+  id: string;
+  quantity: number;
+  name: string;
+  price: number;
+}
+
+interface PaymentDetails {
+  method: string;
+  cardNumber: string;
+  cardHolder: string;
+}
+
+interface ShippingDetails {
+  address: string;
+  city: string;
+  country: string;
+}
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -52,9 +71,23 @@ export class CartComponent implements OnInit {
 
   selectedProduct: CartItem | null = null;
   isProductSummaryVisible: boolean = false;
+  
+  showPurchaseConfirmation: boolean = true;
+  orderItems: OrderItem[] = [];
+  paymentDetails: PaymentDetails = {
+    method: 'VISA',
+    cardNumber: '4111',
+    cardHolder: 'NOMBRE USUARIO'
+  };
+  shippingDetails: ShippingDetails = {
+    address: 'Calle Nombre de calle 111',
+    city: 'Ciudad de México',
+    country: 'México'
+  };
 
   ngOnInit(): void {
     this.calculateTotals();
+    this.prepareOrderItems();
   }
 
   calculateTotals(): void {
@@ -82,8 +115,37 @@ export class CartComponent implements OnInit {
     this.isProductSummaryVisible = false;
   }
   
+  prepareOrderItems(): void {
+    this.orderItems = this.cartItems.map(item => ({
+      id: item.id,
+      quantity: item.quantity,
+      name: item.name,
+      price: item.price
+    }));
+    
+    for (let i = 1; i <= 10; i++) {
+      this.orderItems.push({
+        id: `extra-${i}`,
+        quantity: 1,
+        name: `Producto adicional ${i}`,
+        price: 100 + (i * 10)
+      });
+    }
+    
+    this.subtotal = this.orderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    this.total = this.subtotal + this.shipping;
+  }
+  
   proceedToCheckout(): void {
     console.log('Procediendo al checkout con producto:', this.selectedProduct);
     this.hideProductSummary();
+    this.prepareOrderItems();
+    this.showPurchaseConfirmation = true;
+  }
+  
+  continueShopping(): void {
+    this.showPurchaseConfirmation = false;
+    // Aquí podrías navegar a la página de inicio o de búsqueda
+    console.log('Continuando compras...');
   }
 } 

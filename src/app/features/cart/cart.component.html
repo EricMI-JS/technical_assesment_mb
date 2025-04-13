@@ -33,4 +33,15 @@
     (close)="hideProductSummary()"
     (checkout)="proceedToCheckout()">
   </app-product-summary>
+  
+  <app-purchase-confirmation
+    [(visible)]="showPurchaseConfirmation"
+    [items]="orderItems"
+    [subtotal]="subtotal"
+    [shipping]="shipping"
+    [total]="total"
+    [payment]="paymentDetails"
+    [shippingDetails]="shippingDetails"
+    (continueShopping)="continueShopping()">
+  </app-purchase-confirmation>
 </div> 
