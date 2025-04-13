@@ -1,0 +1,36 @@
+<div class="cart-page-container">
+  <div class="cart-header">
+    <h1 class="cart-title">Tu carrito de compras</h1>
+    <p class="cart-items-count">{{cartItems.length}} artículos</p>
+  </div>
+
+  <div class="cart-content">
+    <div class="cart-items">
+      <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+        <app-cart-item 
+          *ngFor="let item of cartItems; let i = index"
+          [product]="item"
+          [quantity]="item.quantity"
+          (quantityChange)="updateQuantity(i, $event)"
+          (removeItem)="removeItem(i)"
+          (productClick)="showProductSummary(item)">
+        </app-cart-item>
+      </ng-container>
+      
+      <ng-template #emptyCart>
+        <div class="empty-cart">
+          <i class="pi pi-shopping-cart"></i>
+          <p>Tu carrito está vacío</p>
+          <button pButton type="button" label="Continuar comprando" routerLink="/search"></button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
+  <app-product-summary 
+    [product]="selectedProduct" 
+    [isVisible]="isProductSummaryVisible"
+    (close)="hideProductSummary()"
+    (checkout)="proceedToCheckout()">
+  </app-product-summary>
+</div> 

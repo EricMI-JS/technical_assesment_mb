@@ -1,0 +1,44 @@
+<div class="product-summary-overlay" *ngIf="isVisible" (click)="closeModal()">
+  <div class="product-summary-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <div class="brand-logo">
+        <img [src]="product?.brandImage" [alt]="product?.brand">
+      </div>
+      <button class="close-button" (click)="closeModal()">×</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="summary-rows">
+        <div class="summary-row">
+          <span class="label">Producto</span>
+          <span class="value">${{product?.price.toFixed(2)}}</span>
+        </div>
+        
+        <div class="summary-row">
+          <span class="label">Envío</span>
+          <span class="value-highlight">Llega mañana</span>
+          <span class="value">${{shippingCost.toFixed(2)}}</span>
+        </div>
+        
+        <div class="summary-row">
+          <span class="label">Calificación</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="rating-value">{{rating}}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="total-row">
+        <span class="label">Total</span>
+        <span class="total-value">${{totalPrice.toFixed(2)}}</span>
+      </div>
+      
+      <button class="checkout-button" (click)="proceedToCheckout()">
+        Continuar compra
+      </button>
+    </div>
+  </div>
+</div> 

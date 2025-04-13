@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/search/search.module').then(m => m.SearchModule)
   },
   {
+    path: 'cart',
+    loadChildren: () => import('./features/cart/cart.module').then(m => m.CartModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
