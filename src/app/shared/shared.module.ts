@@ -11,6 +11,8 @@ import { CategoriesCarouselComponent } from './components/categories-carousel/ca
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { OffersCarouselComponent } from './components/offers-carousel/offers-carousel.component';
 import { ProductsGridComponent } from './components/products-grid/products-grid.component';
+import { StoreCardComponent } from './components/store-card/store-card.component';
+import { OfficialStoresComponent } from './components/official-stores/official-stores.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProductsGridComponent } from './components/products-grid/products-grid.
     CategoriesCarouselComponent,
     ProductCardComponent,
     OffersCarouselComponent,
-    ProductsGridComponent
+    ProductsGridComponent,
+    StoreCardComponent,
+    OfficialStoresComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +41,9 @@ import { ProductsGridComponent } from './components/products-grid/products-grid.
     CategoriesCarouselComponent,
     ProductCardComponent,
     OffersCarouselComponent,
-    ProductsGridComponent
+    ProductsGridComponent,
+    StoreCardComponent,
+    OfficialStoresComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

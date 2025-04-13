@@ -3,10 +3,8 @@
 }
 
 .home-container {
-  padding: 1rem;
-  
   section {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
   
   h2 {
@@ -14,7 +12,6 @@
     margin-bottom: 1.2rem;
     font-weight: 600;
     color: #333;
-    padding-left: 0.5rem;
   }
 }
 
@@ -31,7 +28,6 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.2rem;
-  padding: 0 0.5rem;
   
   h2 {
     margin-bottom: 0;
@@ -56,5 +52,9 @@
 }
 
 .featured-products-section {
+  padding-bottom: 2rem;
+}
+
+.official-stores-section {
   padding-bottom: 2rem;
 }

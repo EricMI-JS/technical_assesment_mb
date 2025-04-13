@@ -1,0 +1,17 @@
+<div class="official-stores">
+  <div class="section-header">
+    <h2>Tiendas Oficiales</h2>
+    <a class="view-all" routerLink="/tiendas">Ver todas</a>
+  </div>
+  
+  <div class="stores-grid">
+    <div class="store-item" *ngFor="let store of stores">
+      <app-store-card
+        [name]="store.name"
+        [logo]="store.logo"
+        [backgroundColor]="store.backgroundColor"
+        [link]="store.link">
+      </app-store-card>
+    </div>
+  </div>
+</div> 
