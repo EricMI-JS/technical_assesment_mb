@@ -1,0 +1,78 @@
+<div class="desktop-header">
+  <div class="header-top">
+    <div class="container">
+      <div class="logo-wrapper" (click)="goToHome()">
+        <div class="logo">LOGO</div>
+      </div>
+      
+      <div class="search-container">
+        <div class="search-bar">
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText [(ngModel)]="searchQuery" 
+                  placeholder="Bujía Mazda 3 de 2015" 
+                  (keyup.enter)="search()" />
+          </span>
+        </div>
+      </div>
+      
+      <div class="car-selector">
+        <div class="car-info">
+          <img [src]="selectedCar.image" [alt]="selectedCar.brand" class="car-brand-logo">
+          <div class="car-details">
+            <span class="car-name">{{ selectedCar.brand }} {{ selectedCar.model }}</span>
+            <span class="car-year">{{ selectedCar.year }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <button class="action-button" (click)="goToNotifications()">
+          <i class="pi pi-comments"></i>
+        </button>
+        
+        <button class="action-button" (click)="goToNotifications()">
+          <i class="pi pi-bell"></i>
+        </button>
+        
+        <button class="action-button" (click)="goToCart()">
+          <i class="pi pi-shopping-cart"></i>
+        </button>
+        
+        <button class="profile-button" (click)="goToProfile()">
+          <img src="assets/images/user-profile.jpg" alt="Perfil">
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="header-navigation">
+    <div class="container">
+      <nav class="main-menu">
+        <ul>
+          <li>
+            <a [routerLink]="'/categorias'" routerLinkActive="active" class="categories-item">
+              <p-dropdown [options]="categories" 
+                         optionLabel="label" 
+                         [showClear]="false" 
+                         placeholder="Categorías" 
+                         styleClass="categories-dropdown p-dropdown-categorias" 
+                         appendTo="body">
+              </p-dropdown>
+              <i class="pi pi-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="'/categorias'" routerLinkActive="active">Ofertas</a>
+          </li>
+          <li>
+            <a [routerLink]="'/categorias'" routerLinkActive="active">Tiendas oficiales</a>
+          </li>
+          <li>
+            <a [routerLink]="'/categorias'" routerLinkActive="active">Vender</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div> 

@@ -14,6 +14,7 @@ import { ProductsGridComponent } from './components/products-grid/products-grid.
 import { StoreCardComponent } from './components/store-card/store-card.component';
 import { OfficialStoresComponent } from './components/official-stores/official-stores.component';
 import { DesktopFooterComponent } from './components/desktop-footer/desktop-footer.component';
+import { DesktopHeaderComponent } from './components/desktop-header/desktop-header.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DesktopFooterComponent } from './components/desktop-footer/desktop-foot
     ProductsGridComponent,
     StoreCardComponent,
     OfficialStoresComponent,
-    DesktopFooterComponent
+    DesktopFooterComponent,
+    DesktopHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { DesktopFooterComponent } from './components/desktop-footer/desktop-foot
     StoreCardComponent,
     OfficialStoresComponent,
     DesktopFooterComponent,
+    DesktopHeaderComponent,
     PrimeNGModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
