@@ -1,3 +1,29 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .hamburger-menu {
+        .pi {
+            font-size: 3rem;
+        }
+    }
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+
+    .login-image {
+        flex: 1.5;
+    }
+
+    .form-wrapper {
+        flex: 1;
+    }
+}
+
 .title {
     text-align: center;
 }
