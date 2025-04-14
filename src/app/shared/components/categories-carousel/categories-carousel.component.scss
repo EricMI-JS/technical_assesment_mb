@@ -1,18 +1,21 @@
 .categories-carousel {
   width: 100%;
-  overflow: hidden;
+  position: relative;
   
   swiper-container {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0.25rem 0;
-    --swiper-theme-color: #ddff00;
+    width: 100%;
+    
+    @media screen and (min-width: 1024px) {
+      ::ng-deep swiper-slide {
+        width: 100% !important;
+        max-width: 256px !important;
+        margin-right: 3.5rem !important;
+      }
+    }
   }
   
-  swiper-slide {
-    width: auto;
+  ::ng-deep swiper-slide {
     height: auto;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: flex;
   }
 } 

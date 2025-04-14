@@ -41,6 +41,18 @@ export class CategoriesCarouselComponent implements OnInit, AfterViewInit {
       title: 'Frenos',
       link: '/categorias/frenos'
     },
+    {
+      id: 4,
+      image: 'assets/images/categories/frenos.png',
+      title: 'Frenos',
+      link: '/categorias/frenos'
+    },
+    {
+      id: 4,
+      image: 'assets/images/categories/frenos.png',
+      title: 'Frenos',
+      link: '/categorias/frenos'
+    },
   ];
 
   constructor() {
