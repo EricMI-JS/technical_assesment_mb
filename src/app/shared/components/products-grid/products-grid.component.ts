@@ -72,6 +72,18 @@ export class ProductsGridComponent implements OnInit {
         count: 45
       },
       isFavorite: false
+    },
+    {
+      id: 'DCATO19943',
+      image: 'assets/images/products/product-5.png',
+      title: 'Filtro de aceite Mann HU 816 X',
+      price: 325,
+      originalPrice: 400,
+      rating: {
+        value: 4.5,
+        count: 45
+      },
+      isFavorite: false
     }
   ];
 
