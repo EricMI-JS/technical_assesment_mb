@@ -9,11 +9,13 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { ProductSummaryComponent } from './components/product-summary/product-summary.component';
 import { PurchaseConfirmationComponent } from './components/purchase-confirmation/purchase-confirmation.component';
 import { PaymentErrorComponent } from './components/payment-error/payment-error.component';
+import { CartItemDesktopComponent } from './components/cart-item-desktop/cart-item-desktop.component';
 
 @NgModule({
   declarations: [
     CartComponent,
     CartItemComponent,
+    CartItemDesktopComponent,
     ProductSummaryComponent,
     PurchaseConfirmationComponent,
     PaymentErrorComponent

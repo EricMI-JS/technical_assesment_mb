@@ -1,0 +1,45 @@
+<div class="cart-item" (click)="onProductClick()">
+  
+  <div class="brand-logo">
+    <div class="brand-logo-image">
+      <img [src]="product.brandImage" [alt]="product.brand">
+    </div>
+
+    <div class="product-image">
+      <img [src]="product.image" [alt]="product.name">
+    </div>
+  </div>
+
+  <div class="product-info">
+    <div class="product-details">
+      <h3 class="product-name">{{product.name}}</h3>
+      <p class="product-description">{{product.description}}</p>
+    </div>
+
+    <div class="actions">
+      <button class="remove-btn" (click)="remove(); $event.stopPropagation()">ELIMINAR</button>
+      <button class="favorite-btn" (click)="$event.stopPropagation()">
+        <div class="icon-container">
+          <img src="assets/icons/favorite.svg" alt="Favorito" class="favorite-icon">
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="quantity-wrapper">
+    <div class="quantity-controls">
+      <button class="quantity-btn decrease" (click)="decreaseQuantity(); $event.stopPropagation()">−</button>
+      <span class="quantity">{{quantity}}</span>
+      <button class="quantity-btn increase" (click)="increaseQuantity(); $event.stopPropagation()">+</button>
+    </div>
+    <div class="availability">{{product.availability}} disponibles</div>
+  </div>
+
+  <div class="product-price-wrapper">
+    <div class="price-wrapper">
+      <span class="price">${{product.price.toFixed(2)}} MXN</span>
+      <span class="shipping-info">Sin cargo por envío</span>
+    </div>
+  </div>
+
+</div>

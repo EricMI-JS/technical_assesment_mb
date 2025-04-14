@@ -52,17 +52,29 @@ export class CartComponent implements OnInit {
       availability: 10
     },
     {
-      id: '2',
-      sku: '1104872',
+      id: '1',
+      sku: '1104850',
       name: 'Amortiguador delantero',
-      description: 'Compatible con Honda Civic 2020-2022',
-      price: 1250.00,
+      description: 'Para tu Ford Figo 2022',
+      price: 360.00,
       image: 'assets/images/products/amortiguador.png',
-      brand: 'LUK',
+      brand: 'Arnott',
       brandImage: 'assets/images/brands/arnott.png',
-      quantity: 1,
-      availability: 5
-    }
+      quantity: 2,
+      availability: 10
+    },
+    {
+      id: '1',
+      sku: '1104850',
+      name: 'Amortiguador delantero',
+      description: 'Para tu Ford Figo 2022',
+      price: 360.00,
+      image: 'assets/images/products/amortiguador.png',
+      brand: 'Arnott',
+      brandImage: 'assets/images/brands/arnott.png',
+      quantity: 2,
+      availability: 10
+    },
   ];
   
   subtotal: number = 0;
@@ -97,7 +109,7 @@ export class CartComponent implements OnInit {
     this.total = this.subtotal + this.shipping;
   }
 
-  updateQuantity(index: number, quantity: number): void {
+  updateQuantity(index: number, quantity: any): void {
     this.cartItems[index].quantity = quantity;
     this.calculateTotals();
   }
