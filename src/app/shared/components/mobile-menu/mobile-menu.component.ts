@@ -14,7 +14,8 @@ export class MobileMenuComponent implements OnInit {
   menuItems = [
     { label: 'Inicio', icon: 'pi pi-home', route: '/home' },
     { label: 'Categorías', icon: 'pi pi-th-large', route: '/categories' },
-    { label: 'Mis Pedidos', icon: 'pi pi-shopping-bag', route: '/orders' },
+    { label: 'Tiendas', icon: 'pi pi-shopping-bag', route: '/stores' },
+    { label: 'Mis Pedidos', icon: 'pi pi-shopping-cart', route: '/orders' },
     { label: 'Favoritos', icon: 'pi pi-heart', route: '/favorites' },
     { label: 'Mi Cuenta', icon: 'pi pi-user', route: '/account' },
     { label: 'Ayuda', icon: 'pi pi-question-circle', route: '/help' }

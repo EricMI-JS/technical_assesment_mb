@@ -1,0 +1,17 @@
+<div class="stores-page-container">
+  <div class="stores-header">
+    <h1>Tiendas Oficiales</h1>
+    <p>Explora nuestras tiendas asociadas con los mejores productos para tu vehículo</p>
+  </div>
+
+  <div class="stores-grid">
+    <div class="store-item" *ngFor="let store of stores">
+      <app-store-card
+        [name]="store.name"
+        [logo]="store.logo"
+        [backgroundColor]="store.backgroundColor"
+        [link]="store.link">
+      </app-store-card>
+    </div>
+  </div>
+</div> 
