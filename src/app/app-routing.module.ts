@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/stores/stores.module').then(m => m.StoresModule)
   },
   {
+    path: 'registro-marca',
+    loadChildren: () => import('./features/brand-registration/brand-registration.module').then(m => m.BrandRegistrationModule)
+  },
+  {
     path: '',
     redirectTo: 'inicio',
     pathMatch: 'full'

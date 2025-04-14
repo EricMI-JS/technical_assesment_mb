@@ -1,0 +1,171 @@
+<div class="brand-registration-container">
+  <div class="brand-registration-content">
+    <h1 class="title">
+      Hola, te pedimos algunos datos para crear una cuenta de marca
+      <span class="title-underline"></span>
+    </h1>
+
+    <div class="brand-form-container">
+      <form [formGroup]="brandForm" (ngSubmit)="onSubmit()">
+        <!-- Información de la empresa -->
+        <div class="form-section" formGroupName="companyInfo">
+          <h2 class="section-title">Información de la empresa</h2>
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label for="commercialName">Nombre Comercial</label>
+              <input 
+                type="text" 
+                id="commercialName"
+                pInputText 
+                formControlName="commercialName" 
+                placeholder="Nombre Comercial"
+              >
+            </div>
+            
+            <div class="form-field">
+              <label for="phone">Teléfono de la empresa</label>
+              <input 
+                type="tel" 
+                id="phone"
+                pInputText 
+                formControlName="phone" 
+                placeholder="Teléfono"
+              >
+            </div>
+            
+            <div class="form-field upload-field">
+              <label for="csf">CSF</label>
+              <div class="upload-button">
+                <label for="csf-file" class="upload-label">Upload</label>
+                <input 
+                  type="file" 
+                  id="csf-file" 
+                  class="file-input" 
+                  (change)="onFileSelected($event, 'csf')"
+                >
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-field upload-field">
+              <label for="officialId">Identificación Oficial</label>
+              <div class="upload-button">
+                <label for="official-id-file" class="upload-label">Upload</label>
+                <input 
+                  type="file" 
+                  id="official-id-file" 
+                  class="file-input" 
+                  (change)="onFileSelected($event, 'officialId')"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dirección -->
+        <div class="form-section" formGroupName="address">
+          <h2 class="section-title">Dirección</h2>
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label for="street">Calle</label>
+              <input 
+                type="text" 
+                id="street"
+                pInputText 
+                formControlName="street" 
+                placeholder="Calle"
+              >
+            </div>
+            
+            <div class="form-field">
+              <label for="extNumber">Número exterior</label>
+              <input 
+                type="text" 
+                id="extNumber"
+                pInputText 
+                formControlName="extNumber" 
+                placeholder="Número exterior"
+              >
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label for="intNumber">Número interior</label>
+              <input 
+                type="text" 
+                id="intNumber"
+                pInputText 
+                formControlName="intNumber" 
+                placeholder="Número Interior"
+              >
+            </div>
+            
+            <div class="form-field">
+              <label for="colony">Colonia</label>
+              <input 
+                type="text" 
+                id="colony"
+                pInputText 
+                formControlName="colony" 
+                placeholder="Colonia"
+              >
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label for="postalCode">Código Postal</label>
+              <input 
+                type="text" 
+                id="postalCode"
+                pInputText 
+                formControlName="postalCode" 
+                placeholder="CP"
+              >
+            </div>
+          </div>
+        </div>
+        
+        <!-- Consentimientos -->
+        <div class="consent-section" formGroupName="consent">
+          <div class="checkbox-field">
+            <p-checkbox
+              [binary]="true"
+              formControlName="termsAndConditions"
+              inputId="termsAndConditions"
+            ></p-checkbox>
+            <label for="termsAndConditions" class="checkbox-label">
+              Acepto los Términos y condiciones y autorizo el uso de mis datos de acuerdo
+              a la Declaración de Privacidad.
+            </label>
+          </div>
+          
+          <div class="checkbox-field">
+            <p-checkbox
+              [binary]="true"
+              formControlName="marketingEmails"
+              inputId="marketingEmails"
+            ></p-checkbox>
+            <label for="marketingEmails" class="checkbox-label">
+              Acepto recibir información por correo
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button 
+            pButton 
+            type="submit" 
+            label="Crear" 
+            class="create-button"
+            [disabled]="brandForm.invalid"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 
