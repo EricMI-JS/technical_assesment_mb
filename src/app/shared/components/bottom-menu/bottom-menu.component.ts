@@ -16,7 +16,7 @@ interface MenuItem {
 })
 export class BottomMenuComponent implements OnInit {
   menuItems: MenuItem[] = [
-    { label: 'Inicio', icon: 'assets/icons/home.svg', route: '/home', active: false },
+    { label: 'Inicio', icon: 'assets/icons/home.svg', route: '/inicio', active: false },
     { label: 'Tiendas', icon: 'assets/icons/shop.svg', route: '/tiendas', active: false },
     { label: 'Favoritos', icon: 'assets/icons/favorite.svg', route: '/favoritos', active: false },
     { label: 'Perfil', icon: 'assets/icons/profile.svg', route: '/perfil', active: false }

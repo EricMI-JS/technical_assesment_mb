@@ -7,16 +7,20 @@ const routes: Routes = [
     loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'home',
+    path: 'inicio',
     loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'search',
+    path: 'buscar',
     loadChildren: () => import('./features/search/search.module').then(m => m.SearchModule)
   },
   {
-    path: 'cart',
+    path: 'carrito',
     loadChildren: () => import('./features/cart/cart.module').then(m => m.CartModule)
+  },
+  {
+    path: 'pago',
+    loadChildren: () => import('./features/checkout/checkout.module').then(m => m.CheckoutModule)
   },
   {
     path: 'tiendas',
@@ -24,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   }
 ];
