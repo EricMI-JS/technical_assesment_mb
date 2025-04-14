@@ -11,6 +11,10 @@
   height: 70px;
   padding: 0.5rem 0;
   z-index: 100;
+  
+  @media (min-width: 992px) {
+    display: none;
+  }
 }
 
 .menu-item {

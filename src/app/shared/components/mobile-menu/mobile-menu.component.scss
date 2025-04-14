@@ -3,6 +3,10 @@
   background-color: #ddff00;
   padding: 1.3rem 0;
   position: relative;
+  
+  @media (min-width: 992px) {
+    display: none;
+  }
 }
 
 .menu-header {
