@@ -5,6 +5,7 @@
     margin-bottom: 2rem;
 
     .hamburger-menu {
+        cursor: pointer;
         .pi {
             font-size: 3rem;
         }
@@ -12,15 +13,24 @@
 }
 
 .login-container {
-    width: 100%;
     display: flex;
 
     .login-image {
         flex: 1.5;
+        
+        img {
+            width: 651px;
+            height: 814px;
+            object-fit: contain;
+        }
     }
 
     .form-wrapper {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
     }
 }
 
@@ -223,6 +233,52 @@
 
         .apple {
             background-color: #000000;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .heading {
+        display: none !important;
+    }
+
+    .login-container {
+        padding: 20px;
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .login-image {
+        display: none !important;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .login-container {
+        .login-image {
+            flex: 1;
+            img {
+                width: 651px;
+                height: 814px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1441px) {
+    .login-container {
+        .login-image {
+            flex: 1.5;
+            img {
+                width: 651px;
+                height: 814px;
+            }
         }
     }
 }
