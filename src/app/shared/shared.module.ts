@@ -13,6 +13,7 @@ import { OffersCarouselComponent } from './components/offers-carousel/offers-car
 import { ProductsGridComponent } from './components/products-grid/products-grid.component';
 import { StoreCardComponent } from './components/store-card/store-card.component';
 import { OfficialStoresComponent } from './components/official-stores/official-stores.component';
+import { DesktopFooterComponent } from './components/desktop-footer/desktop-footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OfficialStoresComponent } from './components/official-stores/official-s
     OffersCarouselComponent,
     ProductsGridComponent,
     StoreCardComponent,
-    OfficialStoresComponent
+    OfficialStoresComponent,
+    DesktopFooterComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { OfficialStoresComponent } from './components/official-stores/official-s
     ProductsGridComponent,
     StoreCardComponent,
     OfficialStoresComponent,
+    DesktopFooterComponent,
     PrimeNGModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
