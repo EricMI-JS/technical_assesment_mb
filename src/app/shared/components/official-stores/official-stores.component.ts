@@ -31,6 +31,18 @@ export class OfficialStoresComponent implements OnInit {
       logo: 'assets/images/stores/totalparts.png',
       backgroundColor: '#4A6C1E',
       link: '/tiendas/totalparts'
+    },
+    {
+      name: 'EagleBHP',
+      logo: 'assets/images/stores/eaglebhp.png',
+      backgroundColor: '#FFFFFF',
+      link: '/tiendas/eaglebhp'
+    },
+    {
+      name: 'Dynamik',
+      logo: 'assets/images/stores/dynamik.png',
+      backgroundColor: '#000000',
+      link: '/tiendas/dynamik'
     }
   ];
 
