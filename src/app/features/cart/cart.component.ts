@@ -73,7 +73,7 @@ export class CartComponent implements OnInit {
   isProductSummaryVisible: boolean = false;
   
   showPurchaseConfirmation: boolean = false;
-  showPaymentError: boolean = true;
+  showPaymentError: boolean = false;
   orderItems: OrderItem[] = [];
   paymentDetails: PaymentDetails = {
     method: 'VISA',
@@ -124,7 +124,7 @@ export class CartComponent implements OnInit {
       price: item.price
     }));
     
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 1; i++) {
       this.orderItems.push({
         id: `extra-${i}`,
         quantity: 1,

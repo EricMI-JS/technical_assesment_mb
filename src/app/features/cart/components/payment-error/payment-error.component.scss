@@ -31,25 +31,29 @@
     border: none;
     font-size: 18px;
     cursor: pointer;
-    color: #555;
     padding: 4px;
+
+    .pi-times {
+      color: #000;
+      font-size: 1.9rem;
+    }
   }
 
   .error-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 16px 0 32px;
+    max-width: 23rem;
     text-align: center;
+    color: #242731;
   }
 
   .error-message {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
   .error-title {
-    font-size: 20px;
+    font-size: 1.6rem;
     font-weight: 600;
     color: #333;
     margin: 0 0 8px 0;
@@ -57,7 +61,7 @@
   }
 
   .error-description {
-    font-size: 16px;
+    font-size: 1rem;
     color: #666;
     margin: 0;
   }
@@ -67,24 +71,17 @@
   }
 
   .icon-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #f1f1f1;
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e0e0e0;
-    
-    .pi-exclamation-circle {
-      font-size: 48px;
-      color: #888;
-    }
   }
 
   .error-actions {
     width: 100%;
-    padding: 16px 0;
+    display: flex;
+    justify-content: center;
   }
 
   .retry-button {
@@ -92,12 +89,14 @@
     background-color: black;
     color: white;
     border: none;
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 14px;
+    border-radius: 12px;
+    padding: 2rem 1.2rem;
+    font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
+    max-width: 160px;
+    margin: auto;
     
     &:hover {
       background-color: #333;

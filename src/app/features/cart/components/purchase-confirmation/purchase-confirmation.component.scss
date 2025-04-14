@@ -69,16 +69,20 @@
   .thanks-message {
     margin: 0 0 4px 0;
     font-weight: 500;
+    font-size: 1.6rem;
   }
-
-  .mercado {
+  
+  .merauto {
     font-weight: bold;
+    color: #000;
+    font-style: italic;
+    letter-spacing: 0.08em;
   }
 
   .congrats-message {
     margin: 0;
     color: #666;
-    font-size: 13px;
+    font-size: 1rem;
   }
 
   .thank-you-section {
@@ -96,8 +100,8 @@
   }
 
   .illustration-persons {
-    width: 120px;
-    height: 80px;
+    width: 250px;
+    height: 140px;
     position: relative;
   }
 
@@ -119,10 +123,9 @@
   }
 
   .divider {
-    width: 90%;
     border: none;
-    border-top: 1px solid #eee;
-    margin: 8px auto;
+    border-top: 3px solid #eee;
+    margin: 3rem auto;
   }
 
   .order-summary {
@@ -130,9 +133,9 @@
   }
 
   .summary-title {
-    font-size: 16px;
+    font-size: 1.8rem;
     font-weight: 500;
-    margin: 0 0 16px 0;
+    margin: 0 0 3rem 0;
     color: #333;
     text-align: center;
   }
@@ -144,8 +147,8 @@
   .item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 14px;
+    margin-bottom: 3rem;
+    font-size: 1rem;
   }
 
   .item-quantity {
@@ -157,7 +160,7 @@
   }
 
   .order-totals {
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   .total-row {
@@ -167,30 +170,38 @@
   }
 
   .total-row.total {
-    font-weight: bold;
-    font-size: 16px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
     margin-top: 12px;
   }
 
-  .payment-info, .shipping-info {
+  .payment-info-container, .shipping-info-container {
     padding: 12px 24px;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .section-title {
     font-size: 14px;
     font-weight: 500;
-    margin: 0 0 8px 0;
+    margin: 0 0 30px 0;
     color: #333;
   }
 
   .payment-method {
     display: flex;
-    justify-content: space-between;
+    gap: 3rem;
     align-items: center;
   }
 
   .card-info {
     display: flex;
+    gap: 1rem;
     flex-direction: column;
     font-size: 14px;
   }
@@ -205,15 +216,16 @@
   }
 
   .card-logo {
-    width: 60px;
+    width: 112px;
     display: flex;
+    justify-content: space-between;
     justify-content: flex-end;
   }
 
   .visa-logo {
     width: 100%;
     height: auto;
-    max-width: 60px;
+    max-width: 112px;
   }
 
   .address, .city-country, .delivery-time {
@@ -228,16 +240,15 @@
     padding: 16px 24px;
     display: flex;
     justify-content: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   }
 
   .continue-button {
-    width: 100%;
+    max-width: 167px;
     background-color: black;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 12px;
+    padding: 1.5rem 1.2rem;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
