@@ -3,7 +3,8 @@ import { register } from 'swiper/element/bundle';
 
 interface Banner {
   id: number;
-  imageUrl: string;
+  mobileImageUrl: string;
+  desktopImageUrl: string;
   alt: string;
   link: string;
 }
@@ -19,13 +20,15 @@ export class BannerCarouselComponent implements OnInit, AfterViewInit {
   banners: Banner[] = [
     {
       id: 1,
-      imageUrl: 'assets/images/banners/banner-mobile.png',
+      mobileImageUrl: 'assets/images/banners/banner-mobile.png',
+      desktopImageUrl: 'assets/images/banners/banner-desktop.png',
       alt: 'Descuento en llantas',
       link: '/promociones/llantas'
     },
     {
       id: 2,
-      imageUrl: 'assets/images/banners/banner-mobile.png',
+      mobileImageUrl: 'assets/images/banners/banner-mobile.png',
+      desktopImageUrl: 'assets/images/banners/banner-desktop.png',
       alt: 'Promoción de accesorios',
       link: '/accesorios'
     }
