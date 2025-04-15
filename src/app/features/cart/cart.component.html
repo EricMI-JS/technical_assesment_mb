@@ -6,30 +6,30 @@
 
   <div class="cart-content">
     <div class="cart-items">
-      <!-- <ng-container *ngIf="cartItems.length > 0; else emptyCart">
-        <app-cart-item 
-          *ngFor="let item of cartItems; let i = index"
-          [product]="item"
-          [quantity]="item.quantity"
-          (quantityChange)="updateQuantity(i, $event)"
-          (removeItem)="removeItem(i)"
-          (productClick)="showProductSummary(item)">
-        </app-cart-item>
-      </ng-container> -->
-
       <ng-container *ngIf="cartItems.length > 0; else emptyCart">
-        <app-cart-item-desktop
-          *ngFor="let item of cartItems; let i = index"
-          [product]="item"
-          [quantity]="item.quantity"
-          (quantityChange)="updateQuantity(i, $event)"
-          (removeItem)="removeItem(i)"
-          (productClick)="showProductSummary(item)">
-        </app-cart-item-desktop>
+        <ng-container *ngIf="isMobile">
+          <app-cart-item 
+            *ngFor="let item of cartItems; let i = index"
+            [product]="item"
+            [quantity]="item.quantity"
+            (quantityChange)="updateQuantity(i, $event)"
+            (removeItem)="removeItem(i)"
+            (productClick)="showProductSummary(item)">
+          </app-cart-item>
+        </ng-container>
+
+        <ng-container *ngIf="!isMobile">
+          <app-cart-item-desktop
+            *ngFor="let item of cartItems; let i = index"
+            [product]="item"
+            [quantity]="item.quantity"
+            (quantityChange)="updateQuantity(i, $event)"
+            (removeItem)="removeItem(i)"
+            (productClick)="showProductSummary(item)">
+          </app-cart-item-desktop>
+        </ng-container>
       </ng-container>
 
-
-      
       <ng-template #emptyCart>
         <div class="empty-cart">
           <i class="pi pi-shopping-cart"></i>

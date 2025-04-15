@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 interface CartItem {
   id: string;
@@ -38,6 +38,13 @@ interface ShippingDetails {
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  isMobile: boolean = window.innerWidth < 768;
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.isMobile = window.innerWidth < 768;
+  }
+
   cartItems: CartItem[] = [
     {
       id: '1',
