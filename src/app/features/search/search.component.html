@@ -1,5 +1,6 @@
 <div class="search-page-container">
-  <div class="filters">
+  <!-- Filtros versión móvil -->
+  <div class="filters-mobile">
     <form #filterForm="ngForm">
       <div class="toggle-filters">
         <div class="toggle-filter">
@@ -43,10 +44,64 @@
     </form>
   </div>
 
-  <app-search-products-grid
-    [nextDayDelivery]="nextDayDelivery"
-    [freeShipping]="freeShipping"
-    [officialStores]="officialStores"
-    [selectedBrand]="selectedBrand">
-  </app-search-products-grid>
+  <div class="search-content">
+    <!-- Filtros versión desktop -->
+    <aside class="filters-sidebar">
+      <h2>Filtros</h2>
+      <form #filterFormDesktop="ngForm">
+        <div class="filter-section">
+          <h3>Opciones de envío</h3>
+          <div class="toggle-filter">
+            <span>Llega mañana</span>
+            <p-inputSwitch [(ngModel)]="nextDayDelivery" name="nextDayDeliveryDesktop" styleClass="small-switch"></p-inputSwitch>
+          </div>
+          
+          <div class="toggle-filter">
+            <span>Envío gratis</span>
+            <p-inputSwitch [(ngModel)]="freeShipping" name="freeShippingDesktop" styleClass="small-switch"></p-inputSwitch>
+          </div>
+          
+          <div class="toggle-filter">
+            <span>Tiendas oficiales</span>
+            <p-inputSwitch [(ngModel)]="officialStores" name="officialStoresDesktop" styleClass="small-switch"></p-inputSwitch>
+          </div>
+        </div>
+        
+        <div class="filter-section">
+          <h3>Filtrar por</h3>
+          <div class="dropdown-filter">
+            <label>Marca</label>
+            <p-dropdown 
+              [options]="brands" 
+              [(ngModel)]="selectedBrand" 
+              placeholder="Todas las marcas" 
+              [showClear]="true"
+              styleClass="minimal-dropdown"
+              name="brandDropdownDesktop">
+            </p-dropdown>
+          </div>
+        </div>
+      </form>
+    </aside>
+
+    <main class="main-content">
+      <div class="sort-bar">
+        <p-dropdown 
+          [options]="sortOptions" 
+          [(ngModel)]="selectedSortOption" 
+          placeholder="Ordenar por" 
+          styleClass="minimal-dropdown"
+          name="sortDropdownDesktop">
+        </p-dropdown>
+      </div>
+
+      <app-search-products-grid
+        [nextDayDelivery]="nextDayDelivery"
+        [freeShipping]="freeShipping"
+        [officialStores]="officialStores"
+        [selectedBrand]="selectedBrand"
+        [itemsPerRow]="4">
+      </app-search-products-grid>
+    </main>
+  </div>
 </div> 

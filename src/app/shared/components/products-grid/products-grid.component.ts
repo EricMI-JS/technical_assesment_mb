@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 interface Product {
   id: string;
@@ -23,6 +23,12 @@ export class ProductsGridComponent implements OnInit {
   @Input() showViewAll: boolean = true;
   @Input() viewAllLink: string = '/productos';
   @Input() limit: number = 4;
+  @Input() itemsPerRow: number = 4;
+
+  @HostBinding('attr.items-per-row')
+  get itemsPerRowAttr(): string {
+    return this.itemsPerRow.toString();
+  }
   
   products: Product[] = [
     {
