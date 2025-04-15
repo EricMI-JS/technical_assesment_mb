@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ProductsService } from '../services/products.service';
-import { ProductContent, LastVisitedContent } from '../models/product.model';
+import { ProductContent, LastVisitedContent, SearchResult } from '../models/product.model';
 
 export interface Product {
   id: string;
@@ -25,6 +25,9 @@ export class ProductsFacade {
 
   private lastVisitedProductsSubject = new BehaviorSubject<Product[]>([]);
   lastVisitedProducts$ = this.lastVisitedProductsSubject.asObservable();
+
+  private searchProductsSubject = new BehaviorSubject<Product[]>([]);
+  searchProducts$ = this.searchProductsSubject.asObservable();
   
   private defaultImages = [
     'assets/images/products/product-1.png',
@@ -75,6 +78,21 @@ export class ProductsFacade {
     };
   }
 
+  private transformSearchResult(result: SearchResult): Product {
+    return {
+      id: result.unique_id,
+      image: result.imagen || this.getRandomImage(),
+      title: result.titulo || result.nombre,
+      price: result.precio ?? 0,
+      originalPrice: result.precio ?? 0,
+      rating: {
+        value: Number((4 + Math.random()).toFixed(1)),
+        count: Math.floor(Math.random() * 200) + 20
+      },
+      isFavorite: false
+    };
+  }
+
   async loadProductsOnSale(): Promise<void> {
     try {
       const response = await this.productsService.getProductsOnSale();
@@ -99,11 +117,27 @@ export class ProductsFacade {
     }
   }
 
+  async searchProducts(query: string, limit: number = 20, page: number = 1, categoriaSeleccionada: string = 'undefined', marcasSeleccionadas: string = '', vehiculo: string = ''): Promise<void> {
+    try {
+      const response = await this.productsService.searchProducts(query, limit, page, categoriaSeleccionada, marcasSeleccionadas, vehiculo);
+      if (response.results) {
+        const transformedProducts = response.results.map(result => this.transformSearchResult(result));
+        this.searchProductsSubject.next(transformedProducts);
+      }
+    } catch (error) {
+      console.error('Error searching products:', error);
+    }
+  }
+
   getProducts(): Product[] {
     return this.productsSubject.value;
   }
 
   getLastVisitedProducts(): Product[] {
     return this.lastVisitedProductsSubject.value;
+  }
+
+  getSearchProducts(): Product[] {
+    return this.searchProductsSubject.value;
   }
 } 

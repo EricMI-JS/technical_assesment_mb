@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductsGridComponent } from '../../../../shared/components/products-grid/products-grid.component';
+import { Product } from '../../../../features/products/facades/products.facade';
 
 @Component({
   selector: 'app-search-products-grid',
@@ -11,10 +12,11 @@ export class SearchProductsGridComponent extends ProductsGridComponent implement
   @Input() freeShipping: boolean = false;
   @Input() officialStores: boolean = false;
   @Input() selectedBrand: string | null = null;
+  @Input() override products: Product[] = [];
 
   override ngOnInit(): void {
     this.showViewAll = false;
-    this.limit = 8;
+    this.limit = 13;
   }
 
   override get displayProducts() {

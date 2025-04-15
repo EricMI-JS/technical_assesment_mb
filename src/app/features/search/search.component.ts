@@ -1,18 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductsFacade, Product } from '../../features/products/facades/products.facade';
 import { SelectItem } from 'primeng/api';
-
-interface Product {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  originalPrice?: number;
-  rating: {
-    value: number;
-    count: number;
-  };
-  isFavorite: boolean;
-}
 
 @Component({
   selector: 'app-search',
@@ -40,60 +29,24 @@ export class SearchComponent implements OnInit {
   ];
   selectedSortOption: string = 'relevance';
 
-  products: Product[] = [
-    {
-      id: 'DCATO19939',
-      image: 'assets/images/products/radiador.jpg',
-      title: 'Radiador agricola tractor Case 580 k Aluminio/Aluminio TM',
-      price: 1842,
-      originalPrice: 1842,
-      rating: {
-        value: 4.9,
-        count: 120
-      },
-      isFavorite: false
-    },
-    {
-      id: 'DCATO19939',
-      image: 'assets/images/products/aspas.jpg',
-      title: 'Aspas para ventilador Mazda B20000, B22000',
-      price: 1842,
-      originalPrice: 1842,
-      rating: {
-        value: 4.9,
-        count: 85
-      },
-      isFavorite: false
-    },
-    {
-      id: 'DCATO19939',
-      image: 'assets/images/products/radiador.jpg',
-      title: 'Radiador agricola tractor Case 580 k Aluminio/Aluminio TM',
-      price: 1842,
-      originalPrice: 1842,
-      rating: {
-        value: 4.9,
-        count: 62
-      },
-      isFavorite: false
-    },
-    {
-      id: 'DCATO19939',
-      image: 'assets/images/products/aspas.jpg',
-      title: 'Aspas para ventilador Mazda B20000, B22000',
-      price: 1842,
-      originalPrice: 1842,
-      rating: {
-        value: 4.9,
-        count: 45
-      },
-      isFavorite: false
-    }
-  ];
+  products: Product[] = [];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private productsFacade: ProductsFacade
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.route.queryParams.subscribe(async params => {
+      const query = params['q'] || '';
+      if (query) {
+        await this.productsFacade.searchProducts(query);
+        this.products = this.productsFacade.getSearchProducts();
+        console.log(this.products);
+      } else {
+        this.products = [];
+      }
+    });
   }
 
   getFilteredProducts(): Product[] {
