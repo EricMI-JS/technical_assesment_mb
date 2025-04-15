@@ -24,6 +24,19 @@
     width: 100%;
     margin-bottom: 1rem;
 
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: #DDFF00;
+        margin: 1rem 0;
+      }
+    }
+
     .sku {
       text-transform: uppercase;
       font-weight: 400;
@@ -144,6 +157,9 @@
       margin-bottom: 1.2rem;
 
       .sku {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
         font-size: 1.3rem;
       }
 

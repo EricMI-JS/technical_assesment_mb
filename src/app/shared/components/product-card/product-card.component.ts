@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 interface ProductRating {
   value: number;
@@ -18,6 +18,9 @@ export class ProductCardComponent implements OnInit {
   @Input() originalPrice?: number;
   @Input() rating: ProductRating = { value: 0, count: 0 };
   @Input() isFavorite: boolean = false;
+  @Input() showCheckbox: boolean = false;
+  @Input() isChecked: boolean = false;
+  @Output() checkboxChange = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -26,6 +29,11 @@ export class ProductCardComponent implements OnInit {
 
   toggleFavorite(): void {
     this.isFavorite = !this.isFavorite;
+  }
+
+  onCheckboxChange(event: any): void {
+    this.isChecked = event.target.checked;
+    this.checkboxChange.emit(this.isChecked);
   }
 
   formatPrice(price: number): string {

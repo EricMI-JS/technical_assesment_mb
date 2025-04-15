@@ -1,7 +1,11 @@
 <div class="product-card">
   <div class="product-header">
     <div class="product-header-top">
-      <div class="sku">SKU: {{id}}</div>
+      <div class="sku">SKU: {{id}}
+        <div class="checkbox-wrapper" *ngIf="showCheckbox">
+          <input type="checkbox" [checked]="isChecked" (change)="onCheckboxChange($event)">
+        </div>
+      </div>
       <button class="favorite-button" (click)="toggleFavorite()">
         <img *ngIf="isFavorite" src="assets/icons/favorite.svg" alt="Favorito" class="favorite-icon favorite-active">
         <img *ngIf="!isFavorite" src="assets/icons/favorite.svg" alt="Favorito" class="favorite-icon">

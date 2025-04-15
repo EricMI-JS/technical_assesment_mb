@@ -1,5 +1,18 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
+interface Product {
+  id: string;
+  image: string;
+  title: string;
+  price: number;
+  originalPrice?: number;
+  rating: {
+    value: number;
+    count: number;
+  };
+  isFavorite: boolean;
+}
+
 interface CartItem {
   id: string;
   sku: string;
@@ -44,6 +57,47 @@ export class CartComponent implements OnInit {
   onResize() {
     this.isMobile = window.innerWidth < 768;
   }
+
+  frequentlyBoughtItems: Product[] = [
+    {
+      id: 'DCATO19939',
+      image: 'assets/images/products/product-1.png',
+      title: 'Radiador agrícola tractor Case 580 k Aluminio/Aluminio TM',
+      price: 1842,
+      originalPrice: 1842,
+      rating: {
+        value: 4.9,
+        count: 120
+      },
+      isFavorite: false
+    },
+    {
+      id: 'DCATO19940',
+      image: 'assets/images/products/product-2.png',
+      title: 'Llanta Michelin Energy LTX 245/70R16 111T',
+      price: 2950,
+      originalPrice: 3450,
+      rating: {
+        value: 4.8,
+        count: 85
+      },
+      isFavorite: false
+    },
+    {
+      id: 'DCATO19941',
+      image: 'assets/images/products/product-3.png',
+      title: 'Batería Motorcraft BM-51R 500CCA',
+      price: 1599,
+      originalPrice: 1899,
+      rating: {
+        value: 4.7,
+        count: 62
+      },
+      isFavorite: false
+    }
+  ];
+
+  selectedFrequentItems: Set<string> = new Set();
 
   cartItems: CartItem[] = [
     {
@@ -193,5 +247,34 @@ export class CartComponent implements OnInit {
     this.showPurchaseConfirmation = false;
     // Aquí podrías navegar a la página de inicio o de búsqueda
     console.log('Continuando compras...');
+  }
+
+  addFrequentItemsToCart(): void {
+    const itemsToAdd = this.frequentlyBoughtItems
+      .filter(product => this.selectedFrequentItems.has(product.id))
+      .map(product => ({
+        id: product.id,
+        sku: product.id,
+        name: product.title,
+        description: '',
+        price: product.price,
+        image: product.image,
+        brand: '',
+        brandImage: '',
+        quantity: 1,
+        availability: 10
+      }));
+    
+    this.cartItems.push(...itemsToAdd);
+    this.calculateTotals();
+    this.selectedFrequentItems.clear();
+  }
+
+  onFrequentItemSelect(itemId: string, isChecked: boolean): void {
+    if (isChecked) {
+      this.selectedFrequentItems.add(itemId);
+    } else {
+      this.selectedFrequentItems.delete(itemId);
+    }
   }
 } 

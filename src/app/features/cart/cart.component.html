@@ -41,6 +41,33 @@
         </app-cart-summary>
       </div>
     </div>
+
+    <!-- Sección de Comprados Habitualmente -->
+    <div class="frequently-bought-section" *ngIf="frequentlyBoughtItems.length > 0">
+      <h2 class="section-title">Comprados habitualmente</h2>
+      <div class="frequently-bought-items">
+        <div class="product-grid">
+          <app-product-card *ngFor="let item of frequentlyBoughtItems"
+            [id]="item.id"
+            [image]="item.image"
+            [title]="item.title"
+            [price]="item.price"
+            [originalPrice]="item.originalPrice"
+            [rating]="item.rating"
+            [isFavorite]="item.isFavorite"
+            [showCheckbox]="true"
+            [isChecked]="selectedFrequentItems.has(item.id)"
+            (checkboxChange)="onFrequentItemSelect(item.id, $event)">
+          </app-product-card>
+          <div class="add-to-cart-action">
+            <h3>Precio total:</h3>
+            <p>{{total | currency}}</p>
+            <button pButton type="button" label="Agregar al carrito" (click)="addFrequentItemsToCart()"></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <app-product-summary [product]="selectedProduct" [isVisible]="isProductSummaryVisible" (close)="hideProductSummary()"
