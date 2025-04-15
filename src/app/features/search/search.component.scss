@@ -1,5 +1,4 @@
 .search-page-container {
-  padding: 1.6rem;
   background-color: #f8f8f8;
   min-height: calc(100vh - 64px);
 
@@ -9,25 +8,25 @@
 
     .toggle-filters {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 1.6rem;
+      margin: 1.6rem 0;
       
       .toggle-filter {
-        padding: .8rem;
+        padding: 5px 8px;
         border-radius: .8rem;
         background-color: #ffffff;
         display: flex;
+        gap: 6px;
         justify-content: space-between;
         align-items: center;
-        font-size: 1.4rem;
+        font-size: 1rem;
       }
     }
 
     .dropdown-filters {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
 
       .dropdown-filter {
         width: 100%;
@@ -167,104 +166,6 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .search-page-container {
-    padding: 2.4rem;
-
-    .filters-mobile {
-      display: none;
-    }
-
-    .search-content {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 2.4rem;
-
-      .filters-sidebar {
-        display: block;
-        background-color: #ffffff;
-        border-radius: 0.8rem;
-        padding: 2rem;
-        height: fit-content;
-        position: sticky;
-        top: 2rem;
-
-        h2 {
-          font-size: 2rem;
-          color: #333;
-          margin-bottom: 2.4rem;
-          font-weight: 500;
-        }
-
-        .filter-section {
-          margin-bottom: 2.4rem;
-
-          h3 {
-            font-size: 1.4rem;
-            color: #666;
-            margin-bottom: 1.6rem;
-            font-weight: 500;
-          }
-
-          .toggle-filter {
-            padding: 1.2rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.4rem;
-            color: #333;
-            border-bottom: 1px solid #f0f0f0;
-
-            &:last-child {
-              border-bottom: none;
-            }
-          }
-
-          .dropdown-filter {
-            label {
-              display: block;
-              font-size: 1.4rem;
-              color: #333;
-              margin-bottom: 0.8rem;
-            }
-
-            p-dropdown {
-              width: 100%;
-              
-              ::ng-deep .p-dropdown {
-                width: 100%;
-                border: 1px solid #e0e0e0;
-                border-radius: 0.4rem;
-                
-                .p-dropdown-label {
-                  padding: 0.8rem 1.2rem;
-                  font-size: 1.4rem;
-                  color: #333;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .main-content {
-        .sort-bar {
-          display: flex;
-          justify-content: flex-end;
-          background-color: #ffffff;
-          padding: 1.2rem;
-          border-radius: 0.8rem;
-          margin-bottom: 2rem;
-
-          p-dropdown {
-            width: 200px;
-          }
-        }
-      }
-    }
-  }
-}
-
 :host ::ng-deep {
   .p-inputswitch.small-switch {
     width: 2rem !important;
@@ -292,9 +193,14 @@
     background-color: transparent !important;
     
     .p-dropdown-label {
+      max-width: fit-content;
       padding: 0.8rem !important;
       font-size: 1.1rem;
       color: #333;
+
+      @media screen and (min-width: 1024px) {
+        font-size: 1.8rem;
+      }
     }
     
     .p-dropdown-trigger {
@@ -312,3 +218,135 @@
     }
   }
 } 
+
+@media screen and (min-width: 1024px) {
+  .search-page-container {
+    padding: 2.4rem;
+
+    .filters-mobile {
+      display: none;
+    }
+
+    .search-content {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.4rem;
+
+      .filters-sidebar {
+        display: block;
+        border-radius: 0.8rem;
+        padding: 2rem;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+
+        h2 {
+          font-size: 2rem;
+          color: #333;
+          margin-bottom: 2.4rem;
+          font-weight: 500;
+        }
+
+        .filter-section {
+          margin-bottom: 2.4rem;
+
+          h3 {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 1.6rem;
+            font-weight: 500;
+          }
+
+          .toggle-filter {
+            background-color: #ffffff;
+            padding: 1.2rem;
+            border-radius: .8rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.6rem;
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+
+          .dropdown-filter {
+            label {
+              display: block;
+              font-size: 1.4rem;
+              color: #333;
+              margin-bottom: 0.8rem;
+            }
+
+            p-dropdown {
+              width: 100%;
+              
+              ::ng-deep .p-dropdown {
+                width: 100%;
+                border: 1px solid #e0e0e0;
+                border-radius: 0.4rem;
+                
+                .p-dropdown-label {
+                  padding: 0.8rem 1.2rem;
+                  font-size: 1.8rem;
+                  color: #333;
+                }
+              }
+            }
+          }
+        }
+
+        .brand-filter {
+          .dropdown-filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 0.8rem 1.2rem;
+            margin-bottom: 1.2rem;
+            border-radius: .8rem;
+            label {
+              font-size: 1.6rem;
+            }
+            i {
+              font-size: 1.6rem;
+            }
+          } 
+
+          .brand-items {
+            background-color: #ffffff;
+          }
+
+          .brand-item {
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.2rem; 
+            font-size: 1.6rem;
+            border-radius: .8rem;
+          }
+        }
+      }
+
+      .main-content {
+        .sort-bar {
+          display: flex;
+          background-color: #ffffff;
+          padding: 1.2rem;
+          border-radius: 0.8rem;
+          margin-bottom: 2rem;
+
+          p-dropdown {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}

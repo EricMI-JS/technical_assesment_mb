@@ -34,7 +34,6 @@ export class SearchComponent implements OnInit {
   selectedBrand: string | null = null;
 
   sortOptions: SelectItem[] = [
-    { label: 'Más relevantes', value: 'relevance' },
     { label: 'Menor precio', value: 'price_asc' },
     { label: 'Mayor precio', value: 'price_desc' },
     { label: 'Más recientes', value: 'newest' }

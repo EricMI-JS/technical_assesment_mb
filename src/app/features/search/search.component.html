@@ -7,37 +7,28 @@
           <span>Llega mañana</span>
           <p-inputSwitch [(ngModel)]="nextDayDelivery" name="nextDayDelivery" styleClass="small-switch"></p-inputSwitch>
         </div>
-        
+
         <div class="toggle-filter">
           <span>Envío gratis</span>
           <p-inputSwitch [(ngModel)]="freeShipping" name="freeShipping" styleClass="small-switch"></p-inputSwitch>
         </div>
-        
+
         <div class="toggle-filter">
           <span>Tiendas oficiales</span>
           <p-inputSwitch [(ngModel)]="officialStores" name="officialStores" styleClass="small-switch"></p-inputSwitch>
         </div>
       </div>
-      
+
       <div class="dropdown-filters">
         <div class="dropdown-filter">
-          <p-dropdown 
-            [options]="brands" 
-            [(ngModel)]="selectedBrand" 
-            placeholder="Marcas" 
-            [showClear]="true"
-            styleClass="minimal-dropdown"
-            name="brandDropdown">
+          <p-dropdown [options]="brands" [(ngModel)]="selectedBrand" placeholder="Marcas" [showClear]="true"
+            styleClass="minimal-dropdown" name="brandDropdown">
           </p-dropdown>
         </div>
-        
+
         <div class="dropdown-filter">
-          <p-dropdown 
-            [options]="sortOptions" 
-            [(ngModel)]="selectedSortOption" 
-            placeholder="Ordenar por" 
-            styleClass="minimal-dropdown"
-            name="sortDropdown">
+          <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSortOption" placeholder="Ordenar por"
+            styleClass="minimal-dropdown" name="sortDropdown">
           </p-dropdown>
         </div>
       </div>
@@ -45,40 +36,41 @@
   </div>
 
   <div class="search-content">
-    <!-- Filtros versión desktop -->
     <aside class="filters-sidebar">
-      <h2>Filtros</h2>
       <form #filterFormDesktop="ngForm">
         <div class="filter-section">
-          <h3>Opciones de envío</h3>
           <div class="toggle-filter">
             <span>Llega mañana</span>
-            <p-inputSwitch [(ngModel)]="nextDayDelivery" name="nextDayDeliveryDesktop" styleClass="small-switch"></p-inputSwitch>
+            <p-inputSwitch [(ngModel)]="nextDayDelivery" name="nextDayDeliveryDesktop"
+              styleClass="small-switch"></p-inputSwitch>
           </div>
-          
+
           <div class="toggle-filter">
             <span>Envío gratis</span>
-            <p-inputSwitch [(ngModel)]="freeShipping" name="freeShippingDesktop" styleClass="small-switch"></p-inputSwitch>
+            <p-inputSwitch [(ngModel)]="freeShipping" name="freeShippingDesktop"
+              styleClass="small-switch"></p-inputSwitch>
           </div>
-          
+
           <div class="toggle-filter">
             <span>Tiendas oficiales</span>
-            <p-inputSwitch [(ngModel)]="officialStores" name="officialStoresDesktop" styleClass="small-switch"></p-inputSwitch>
+            <p-inputSwitch [(ngModel)]="officialStores" name="officialStoresDesktop"
+              styleClass="small-switch"></p-inputSwitch>
           </div>
         </div>
-        
-        <div class="filter-section">
-          <h3>Filtrar por</h3>
+
+        <div class="filter-section brand-filter">
           <div class="dropdown-filter">
-            <label>Marca</label>
-            <p-dropdown 
-              [options]="brands" 
-              [(ngModel)]="selectedBrand" 
-              placeholder="Todas las marcas" 
-              [showClear]="true"
-              styleClass="minimal-dropdown"
-              name="brandDropdownDesktop">
-            </p-dropdown>
+            <label>Marcas</label>
+            <i class="pi pi-chevron-down"></i>
+          </div>
+
+          <div class="brand-items">
+            <div *ngFor="let item of brands">
+              <div class="brand-item">
+                <span>{{item.label}}</span>
+                <p-checkbox [value]="item"></p-checkbox>
+              </div>
+            </div>
           </div>
         </div>
       </form>
@@ -86,22 +78,14 @@
 
     <main class="main-content">
       <div class="sort-bar">
-        <p-dropdown 
-          [options]="sortOptions" 
-          [(ngModel)]="selectedSortOption" 
-          placeholder="Ordenar por" 
-          styleClass="minimal-dropdown"
-          name="sortDropdownDesktop">
+        <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSortOption" placeholder="Ordenar por"
+          styleClass="minimal-dropdown" name="sortDropdownDesktop">
         </p-dropdown>
       </div>
 
-      <app-search-products-grid
-        [nextDayDelivery]="nextDayDelivery"
-        [freeShipping]="freeShipping"
-        [officialStores]="officialStores"
-        [selectedBrand]="selectedBrand"
-        [itemsPerRow]="4">
+      <app-search-products-grid [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
+        [officialStores]="officialStores" [selectedBrand]="selectedBrand" [itemsPerRow]="4">
       </app-search-products-grid>
     </main>
   </div>
-</div> 
+</div>
