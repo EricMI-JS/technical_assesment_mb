@@ -1,12 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { register } from 'swiper/element/bundle';
-
-interface Category {
-  id: number;
-  image: string;
-  title: string;
-  link: string;
-}
+import { CategoriesFacade } from 'src/app/features/categories/facades/categories.facade';
+import { Category } from 'src/app/features/categories/models/category.model';
 
 @Component({
   selector: 'app-categories-carousel',
@@ -16,50 +11,17 @@ interface Category {
 export class CategoriesCarouselComponent implements OnInit, AfterViewInit {
   @ViewChild('categoriesSwiperContainer') swiperContainer!: ElementRef;
   
-  categories: Category[] = [
-    {
-      id: 1,
-      image: 'assets/images/categories/llanta.png',
-      title: 'Llantas',
-      link: '/categorias/llantas'
-    },
-    {
-      id: 2,
-      image: 'assets/images/categories/frenos.png',
-      title: 'Frenos',
-      link: '/categorias/frenos'
-    },
-    {
-      id: 3,
-      image: 'assets/images/categories/llanta.png',
-      title: 'Llantas',
-      link: '/categorias/llantas'
-    },
-    {
-      id: 4,
-      image: 'assets/images/categories/frenos.png',
-      title: 'Frenos',
-      link: '/categorias/frenos'
-    },
-    {
-      id: 4,
-      image: 'assets/images/categories/frenos.png',
-      title: 'Frenos',
-      link: '/categorias/frenos'
-    },
-    {
-      id: 4,
-      image: 'assets/images/categories/frenos.png',
-      title: 'Frenos',
-      link: '/categorias/frenos'
-    },
-  ];
+  categories: Category[] = [];
 
-  constructor() {
+  constructor(
+    private categoriesFacade: CategoriesFacade
+  ) {
     register();
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.categoriesFacade.loadCategories();
+    this.categories = this.categoriesFacade.getCategories();
   }
 
   ngAfterViewInit(): void {
@@ -87,7 +49,6 @@ export class CategoriesCarouselComponent implements OnInit, AfterViewInit {
     };
 
     Object.assign(swiperEl, swiperParams);
-
     swiperEl.initialize();
   }
 } 
