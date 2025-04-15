@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsFacade, Product } from '../products/facades/products.facade';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  productsOnSale: Product[] = [];
 
-  constructor() { }
+  constructor(private productsFacade: ProductsFacade) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.productsFacade.loadProductsOnSale();
+    this.productsOnSale = this.productsFacade.getProducts();
   }
-
 } 
