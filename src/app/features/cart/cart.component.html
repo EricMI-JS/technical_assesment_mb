@@ -4,12 +4,12 @@
   </div>
 
   <div class="cart-content">
-    <a routerLink="/buscar" class="continue-shopping-link">
-      <i class="pi pi-arrow-left"></i>
-      Seguir comprando
-    </a>
     <div class="cart-main">
       <div class="cart-items">
+        <a routerLink="/buscar" class="continue-shopping-link">
+          <i class="pi pi-arrow-left"></i>
+          Seguir comprando
+        </a>
         <ng-container *ngIf="cartItems.length > 0; else emptyCart">
           <ng-container *ngIf="isMobile">
             <app-cart-item *ngFor="let item of cartItems; let i = index" [product]="item" [quantity]="item.quantity"
