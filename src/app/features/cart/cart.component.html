@@ -35,7 +35,7 @@
         </ng-template>
       </div>
 
-      <div class="cart-summary-container" *ngIf="cartItems.length > 0">
+      <div class="cart-summary" *ngIf="cartItems.length > 0">
         <app-cart-summary [subtotal]="subtotal" [shipping]="shipping" [total]="total" [itemCount]="cartItems.length"
           (checkout)="proceedToCheckout()">
         </app-cart-summary>
