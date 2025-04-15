@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
-import { ProductResponse } from '../models/product.model';
+import { ProductResponse, LastVisitedResponse } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +14,9 @@ export class ProductsService {
 
   async getProductsOnSale(): Promise<ProductResponse> {
     return firstValueFrom(this.http.get<ProductResponse>(`${this.apiUrl}/getProductosOferta/`));
+  }
+
+  async getLastVisitedProducts(): Promise<LastVisitedResponse> {
+    return firstValueFrom(this.http.get<LastVisitedResponse>(`${this.apiUrl}/getProductosUltimaVisita/`));
   }
 } 

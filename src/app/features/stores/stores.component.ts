@@ -40,7 +40,7 @@ export class StoresComponent implements OnInit {
     },
     {
       name: 'Eagle BHP',
-      logo: 'assets/images/stores/eagle-bhp.png',
+      logo: 'assets/images/stores/eaglebhp.png',
       backgroundColor: '#2196F3',
       link: '/tiendas/eagle-bhp'
     }

@@ -4,7 +4,13 @@ export interface ProductResponse {
   mensaje: string;
 }
 
-export interface ProductContent {
+export interface LastVisitedResponse {
+  success: number;
+  content: LastVisitedContent[];
+  mensaje: string;
+}
+
+export interface BaseProduct {
   id: number;
   nombre: string;
   marca: string;
@@ -14,7 +20,7 @@ export interface ProductContent {
   ancho: string;
   alto: string;
   largo: string;
-  imagen: null | string;
+  imagen: string | null;
   elementos_recomendados: number;
   fecha_registro: Date;
   sku: string;
@@ -27,4 +33,12 @@ export interface ProductContent {
   marca_autoparte: number;
   categoria: number;
   subsubcategoria: number;
+}
+
+export interface ProductContent extends BaseProduct {}
+
+export interface LastVisitedContent extends BaseProduct {
+  precio: number;
+  publicacion: string[];
+  marca_imagen: string;
 } 
