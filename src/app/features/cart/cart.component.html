@@ -1,65 +1,57 @@
 <div class="cart-page-container">
   <div class="cart-header">
-    <h1 class="cart-title">Tu carrito de compras</h1>
-    <p class="cart-items-count">{{cartItems.length}} artículos</p>
+    <h1 class="cart-title">Carrito de compra</h1>
   </div>
 
   <div class="cart-content">
-    <div class="cart-items">
-      <ng-container *ngIf="cartItems.length > 0; else emptyCart">
-        <ng-container *ngIf="isMobile">
-          <app-cart-item 
-            *ngFor="let item of cartItems; let i = index"
-            [product]="item"
-            [quantity]="item.quantity"
-            (quantityChange)="updateQuantity(i, $event)"
-            (removeItem)="removeItem(i)"
-            (productClick)="showProductSummary(item)">
-          </app-cart-item>
+    <a routerLink="/buscar" class="continue-shopping-link">
+      <i class="pi pi-arrow-left"></i>
+      Seguir comprando
+    </a>
+    <div class="cart-main">
+      <div class="cart-items">
+        <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+          <ng-container *ngIf="isMobile">
+            <app-cart-item *ngFor="let item of cartItems; let i = index" [product]="item" [quantity]="item.quantity"
+              (quantityChange)="updateQuantity(i, $event)" (removeItem)="removeItem(i)"
+              (productClick)="showProductSummary(item)">
+            </app-cart-item>
+          </ng-container>
+
+          <ng-container *ngIf="!isMobile">
+            <app-cart-item-desktop *ngFor="let item of cartItems; let i = index" [product]="item"
+              [quantity]="item.quantity" (quantityChange)="updateQuantity(i, $event)" (removeItem)="removeItem(i)"
+              (productClick)="showProductSummary(item)">
+            </app-cart-item-desktop>
+          </ng-container>
         </ng-container>
 
-        <ng-container *ngIf="!isMobile">
-          <app-cart-item-desktop
-            *ngFor="let item of cartItems; let i = index"
-            [product]="item"
-            [quantity]="item.quantity"
-            (quantityChange)="updateQuantity(i, $event)"
-            (removeItem)="removeItem(i)"
-            (productClick)="showProductSummary(item)">
-          </app-cart-item-desktop>
-        </ng-container>
-      </ng-container>
+        <ng-template #emptyCart>
+          <div class="empty-cart">
+            <i class="pi pi-shopping-cart"></i>
+            <p>Tu carrito está vacío</p>
+            <button pButton type="button" label="Continuar comprando" routerLink="/search"></button>
+          </div>
+        </ng-template>
+      </div>
 
-      <ng-template #emptyCart>
-        <div class="empty-cart">
-          <i class="pi pi-shopping-cart"></i>
-          <p>Tu carrito está vacío</p>
-          <button pButton type="button" label="Continuar comprando" routerLink="/search"></button>
-        </div>
-      </ng-template>
+      <div class="cart-summary-container" *ngIf="cartItems.length > 0">
+        <app-cart-summary [subtotal]="subtotal" [shipping]="shipping" [total]="total" [itemCount]="cartItems.length"
+          (checkout)="proceedToCheckout()">
+        </app-cart-summary>
+      </div>
     </div>
   </div>
-  
-  <app-product-summary 
-    [product]="selectedProduct" 
-    [isVisible]="isProductSummaryVisible"
-    (close)="hideProductSummary()"
+
+  <app-product-summary [product]="selectedProduct" [isVisible]="isProductSummaryVisible" (close)="hideProductSummary()"
     (checkout)="proceedToCheckout()">
   </app-product-summary>
-  
-  <app-purchase-confirmation
-    [(visible)]="showPurchaseConfirmation"
-    [items]="orderItems"
-    [subtotal]="subtotal"
-    [shipping]="shipping"
-    [total]="total"
-    [payment]="paymentDetails"
-    [shippingDetails]="shippingDetails"
+
+  <app-purchase-confirmation [(visible)]="showPurchaseConfirmation" [items]="orderItems" [subtotal]="subtotal"
+    [shipping]="shipping" [total]="total" [payment]="paymentDetails" [shippingDetails]="shippingDetails"
     (continueShopping)="continueShopping()">
   </app-purchase-confirmation>
-  
-  <app-payment-error
-    [(visible)]="showPaymentError"
-    (retry)="retryPayment()">
+
+  <app-payment-error [(visible)]="showPaymentError" (retry)="retryPayment()">
   </app-payment-error>
-</div> 
+</div>

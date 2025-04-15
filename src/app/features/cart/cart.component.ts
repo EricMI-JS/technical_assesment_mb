@@ -82,6 +82,18 @@ export class CartComponent implements OnInit {
       quantity: 2,
       availability: 10
     },
+    {
+      id: '1',
+      sku: '1104850',
+      name: 'Amortiguador delantero',
+      description: 'Para tu Ford Figo 2022',
+      price: 360.00,
+      image: 'assets/images/products/amortiguador.png',
+      brand: 'Arnott',
+      brandImage: 'assets/images/brands/arnott.png',
+      quantity: 2,
+      availability: 10
+    },
   ];
   
   subtotal: number = 0;

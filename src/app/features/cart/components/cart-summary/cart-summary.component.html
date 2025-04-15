@@ -1,0 +1,35 @@
+<div class="cart-summary">
+  <h2 class="summary-title">Resumen de compra</h2>
+
+  <div class="summary-wrapper">
+      <div class="summary-content">
+    <div class="summary-row">
+      <span class="label">Subtotal <br>({{itemCount}})</span>
+      <span class="value">${{subtotal.toFixed(2)}} MXN</span>
+    </div>
+
+    <hr class="summary-divider">
+
+    <div class="summary-row">
+      <span class="label">Envío</span>
+      <span class="value">${{shipping.toFixed(2)}} MXN</span>
+    </div>
+
+    <hr class="summary-divider">
+
+    <div class="summary-row total">
+      <span class="label">TOTAL</span>
+      <span class="value">${{total.toFixed(2)}} MXN</span>
+    </div>
+
+    <button class="checkout-button" (click)="onCheckout()">
+      Pagar
+    </button>
+  </div>
+  </div>
+
+  <div class="secure-purchase">
+    <i class="pi pi-shield"></i>
+    <span>Compra 100% segura</span>
+  </div>
+</div>

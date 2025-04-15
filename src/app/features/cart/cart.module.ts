@@ -10,6 +10,7 @@ import { ProductSummaryComponent } from './components/product-summary/product-su
 import { PurchaseConfirmationComponent } from './components/purchase-confirmation/purchase-confirmation.component';
 import { PaymentErrorComponent } from './components/payment-error/payment-error.component';
 import { CartItemDesktopComponent } from './components/cart-item-desktop/cart-item-desktop.component';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CartItemDesktopComponent } from './components/cart-item-desktop/cart-it
     CartItemDesktopComponent,
     ProductSummaryComponent,
     PurchaseConfirmationComponent,
-    PaymentErrorComponent
+    PaymentErrorComponent,
+    CartSummaryComponent
   ],
   imports: [
     CommonModule,
