@@ -4,7 +4,7 @@
   background-color: #d7ff00;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
   @media (min-width: 992px) {
     display: block;
   }
@@ -12,93 +12,102 @@
 
 .header-top {
   padding: 1.2rem 0;
-  
+
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
   }
-}
 
-.logo-wrapper {
-  cursor: pointer;
-  
-  .logo {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: #000;
-  }
-}
-
-.search-container {
-  flex: 1;
-  max-width: 500px;
-  
-  .search-bar {
-    width: 100%;
-    
-    .p-input-icon-left {
-      width: 100%;
-      
-      input {
-        width: 100%;
-        height: 4.2rem;
-        border-radius: 0.4rem;
-        background-color: white;
-        padding-left: 3.5rem;
-        font-size: 1.4rem;
-        border: none;
-      }
-      
-      i {
-        font-size: 1.6rem;
-        color: #333;
-        left: 1.2rem;
-      }
-    }
-  }
-}
-
-.car-selector {
-  background-color: white;
-  border-radius: 0.4rem;
-  padding: 0.5rem 1.5rem;
-  
-  .car-info {
+  .left-content {
+    flex: 2;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    
-    .car-brand-logo {
-      width: 3.2rem;
-      height: 3.2rem;
-      object-fit: contain;
-    }
-    
-    .car-details {
-      display: flex;
-      flex-direction: column;
-      
-      .car-name {
-        font-size: 1.4rem;
-        font-weight: 500;
-        color: #333;
+    gap: 1.2rem;
+
+    .logo-wrapper {
+      cursor: pointer;
+
+      .logo {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #000;
       }
-      
-      .car-year {
-        font-size: 1.2rem;
-        color: #666;
+    }
+
+    .search-container {
+      flex: 2;
+      .search-bar {
+        width: 100%;
+
+        .p-input-icon-left {
+          width: 100%;
+
+          input {
+            width: 100%;
+            height: 4.2rem;
+            border-radius: 0.8rem;
+            background-color: white;
+            padding-left: 3.5rem;
+            font-size: 1.4rem;
+            border: none;
+          }
+
+          i {
+            font-size: 1.6rem;
+            color: #333;
+            left: 1.2rem;
+          }
+        }
+      }
+    }
+
+    .car-selector {
+      flex: .3;
+      width: 100%;
+      background-color: white;
+      border-radius: 0.4rem;
+      padding: 0.5rem 1.5rem;
+
+      .car-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .car-brand-logo {
+          width: 3.2rem;
+          height: 3.2rem;
+          object-fit: contain;
+        }
+
+        .car-details {
+          display: flex;
+          flex-direction: column;
+
+          .car-name {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #333;
+          }
+
+          .car-year {
+            font-size: 1.2rem;
+            color: #666;
+          }
+        }
       }
     }
   }
 }
 
+
 .header-actions {
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 1.5rem;
-  
+
   .action-button {
     background: transparent;
     border: none;
@@ -108,27 +117,27 @@
     justify-content: center;
     width: 3.6rem;
     height: 3.6rem;
-    
+
     i {
       font-size: 2.2rem;
       color: #333;
     }
   }
-  
+
   .profile-button {
     background: transparent;
     border: none;
     cursor: pointer;
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 5.6rem;
+    height: 5.6rem;
     border-radius: 50%;
     overflow: hidden;
     padding: 0;
-    
+
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
     }
   }
 }
@@ -136,7 +145,7 @@
 .header-navigation {
   background-color: #d7ff00;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
-  
+
   .container {
     display: flex;
     align-items: center;
@@ -150,10 +159,10 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    
+
     li {
       margin-right: 2rem;
-      
+
       a {
         display: flex;
         align-items: center;
@@ -163,16 +172,17 @@
         font-weight: 500;
         padding: 1rem 0;
         transition: color 0.2s;
-        
+
         i {
           margin-left: 0.5rem;
           font-size: 1.2rem;
         }
-        
-        &:hover, &.active {
+
+        &:hover,
+        &.active {
           color: #000;
         }
-        
+
         &.categories-item {
           padding: 0;
         }
@@ -186,11 +196,11 @@
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    
+
     .p-dropdown-trigger {
       display: none !important;
     }
-    
+
     .p-dropdown-label {
       padding: 0 !important;
       font-size: 1.4rem !important;
@@ -198,7 +208,7 @@
       color: #333 !important;
     }
   }
-  
+
   .p-dropdown-trigger-text {
     display: flex;
     align-items: center;
@@ -206,13 +216,13 @@
     font-weight: 500;
     color: #333;
     padding: 1rem 0;
-    
+
     span {
       margin-right: 0.5rem;
     }
-    
+
     i {
       font-size: 1.2rem;
     }
   }
-} 
+}
