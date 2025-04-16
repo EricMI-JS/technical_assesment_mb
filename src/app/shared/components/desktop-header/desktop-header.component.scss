@@ -37,6 +37,7 @@
 
     .search-container {
       flex: 2;
+
       .search-bar {
         width: 100%;
 
@@ -168,6 +169,13 @@
 }
 
 .main-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 80%;
+  margin: auto;
+
   ul {
     display: flex;
     align-items: center;

@@ -4,8 +4,16 @@
     align-items: center;
     margin-bottom: 2rem;
 
+    h1 {
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+
     .hamburger-menu {
         cursor: pointer;
+
         .pi {
             font-size: 3rem;
         }
@@ -17,7 +25,7 @@
 
     .login-image {
         flex: 1.5;
-        
+
         img {
             width: 651px;
             height: 814px;
@@ -29,8 +37,21 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         padding: 2rem;
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+
+            a {
+                text-decoration: none;
+                display: none;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+        }
     }
 }
 
@@ -52,7 +73,7 @@
 
         .p-input-icon-left {
             width: 100%;
-            
+
             input {
                 width: 100%;
                 font-size: 16px;
@@ -91,7 +112,7 @@
         display: flex;
         align-items: center;
         margin: 2rem 0;
-        
+
         label {
             margin-left: 1rem;
             font-size: 12px;
@@ -153,7 +174,7 @@
         width: 100%;
         display: block;
     }
-    
+
     &.secondary-button {
         background-color: var(--button-secondary-bg);
         color: #fff;
@@ -164,8 +185,8 @@
         font-size: 12.24px;
         cursor: pointer;
         text-transform: uppercase;
-        line-height: 0.8; 
-        padding: 13.82px 6.91px; 
+        line-height: 0.8;
+        padding: 13.82px 6.91px;
         display: flex;
         align-items: center;
     }
@@ -201,6 +222,7 @@
     .social-icons {
         display: flex;
         gap: 1.9rem;
+
         .social-icon-button {
             display: flex;
             align-items: center;
@@ -211,7 +233,7 @@
             flex: 1;
             min-height: 47px;
             border: 1px solid transparent;
-            
+
             &.p-button {
                 padding: 0;
             }
@@ -246,16 +268,29 @@
         padding: 20px;
         flex-direction: column;
         min-height: auto;
-    }
 
-    .login-image {
-        display: none !important;
-    }
+        .login-image {
+            display: none !important;
+        }
 
-    .form-wrapper {
-        width: 100%;
-        max-width: 100%;
-        padding: 1rem;
+        .form-wrapper {
+            width: 100%;
+            max-width: 100%;
+            padding: 1rem;
+
+            .form-header {
+                a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    display: block;
+                    i {
+                        color: #000;
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -263,6 +298,7 @@
     .login-container {
         .login-image {
             flex: 1;
+
             img {
                 width: 651px;
                 height: 814px;
@@ -275,6 +311,7 @@
     .login-container {
         .login-image {
             flex: 1.5;
+
             img {
                 width: 651px;
                 height: 814px;

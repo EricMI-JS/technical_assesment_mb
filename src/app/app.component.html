@@ -1,7 +1,7 @@
-<app-mobile-menu></app-mobile-menu>
-<app-desktop-header></app-desktop-header>
+<app-mobile-menu *ngIf="!isLoginPage"></app-mobile-menu>
+<app-desktop-header *ngIf="!isLoginPage"></app-desktop-header>
 <div class="main-content">
   <router-outlet></router-outlet>
-  <app-desktop-footer></app-desktop-footer>
+  <app-desktop-footer *ngIf="!isLoginPage"></app-desktop-footer>
 </div>
-<app-bottom-menu></app-bottom-menu>
+<app-bottom-menu *ngIf="!isLoginPage"></app-bottom-menu>

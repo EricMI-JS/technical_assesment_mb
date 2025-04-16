@@ -16,13 +16,13 @@ export class MobileMenuComponent implements OnInit, OnDestroy {
   private cartSubscription?: Subscription;
 
   menuItems = [
-    { label: 'Inicio', icon: 'pi pi-home', route: '/home' },
-    { label: 'Categorías', icon: 'pi pi-th-large', route: '/categories' },
-    { label: 'Tiendas', icon: 'pi pi-shopping-bag', route: '/stores' },
-    { label: 'Mis Pedidos', icon: 'pi pi-shopping-cart', route: '/orders' },
-    { label: 'Favoritos', icon: 'pi pi-heart', route: '/favorites' },
-    { label: 'Mi Cuenta', icon: 'pi pi-user', route: '/account' },
-    { label: 'Ayuda', icon: 'pi pi-question-circle', route: '/help' }
+    { label: 'Ingresar', icon: 'pi pi-user', route: '/login' },
+    { label: 'Inicio', icon: 'pi pi-home', route: '/inicio' },
+    { label: 'Categorías', icon: 'pi pi-th-large', route: '/categorias' },
+    { label: 'Tiendas', icon: 'pi pi-shopping-bag', route: '/tiendas' },
+    { label: 'Carrito', icon: 'pi pi-shopping-cart', route: '/carrito' },
+    { label: 'Favoritos', icon: 'pi pi-heart', route: '/favoritos' },
+    { label: 'Perfil', icon: 'pi pi-user', route: '/perfil' },
   ];
 
   constructor(

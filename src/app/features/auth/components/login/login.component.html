@@ -1,5 +1,5 @@
 <div class="heading container">
-    <h1>LOGO</h1>
+    <h1><a href="/">LOGO</a></h1>
     <div class="hamburger-menu">
         <i class="pi pi-bars"></i>
     </div>
@@ -11,7 +11,13 @@
     </div>
 
     <div class="form-wrapper">
-        <h2 class="title">Inicia sesión</h2>
+        <div class="form-header">
+            <a href="/">
+                <i class="pi pi-arrow-left"></i>
+            </a>
+            <h2 class="title">Inicia sesión</h2>
+            <p></p>
+        </div>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
             <div class="form-group">
                 <label for="email">Email o nombre de usuario</label>
