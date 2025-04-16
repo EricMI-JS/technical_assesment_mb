@@ -55,9 +55,10 @@
         <div class="left-menu">
           <ul>
             <li>
-              <a [routerLink]="'/categorias'" routerLinkActive="active" class="categories-item">
+              <a class="categories-item">
                 <p-dropdown [options]="categories" optionLabel="label" [showClear]="false" placeholder="Categorías"
-                  styleClass="categories-dropdown p-dropdown-categorias" appendTo="body">
+                  styleClass="categories-dropdown p-dropdown-categorias" appendTo="body"
+                  (onChange)="searchByCategory($event)">
                 </p-dropdown>
                 <i class="pi pi-chevron-down"></i>
               </a>
@@ -66,7 +67,7 @@
               <a [routerLink]="'/categorias'" routerLinkActive="active">Ofertas</a>
             </li>
             <li>
-              <a [routerLink]="'/categorias'" routerLinkActive="active">Tiendas oficiales</a>
+              <a [routerLink]="'/tiendas'" routerLinkActive="active">Tiendas oficiales</a>
             </li>
             <li>
               <a [routerLink]="'/categorias'" routerLinkActive="active">Vender</a>

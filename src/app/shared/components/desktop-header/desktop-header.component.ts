@@ -64,6 +64,12 @@ export class DesktopHeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  searchByCategory(event: any): void {
+    if (event.value) {
+      this.router.navigate(['/buscar'], { queryParams: { q: event.value.value } });
+    }
+  }
+
   navigate(route: string): void {
     this.router.navigate([route]);
   }
