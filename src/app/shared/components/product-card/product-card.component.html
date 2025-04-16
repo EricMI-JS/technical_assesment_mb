@@ -32,7 +32,7 @@
     <div *ngIf="originalPrice" class="original-price">{{formatPrice(originalPrice)}}</div>
     <div class="current-price">
       <span>{{formatPrice(price)}}</span>
-      <button class="add-to-cart-button" (click)="addToCart()">
+      <button class="add-to-cart-button" [class.in-cart]="isInCart" (click)="addToCart()">
         <i class="pi pi-shopping-cart"></i>
       </button>
     </div>

@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { CartService } from '../../../core/services/cart.service';
 import { MessageService } from 'primeng/api';
 import { CartItem } from '../../../core/models/cart.models';
+import { Subscription } from 'rxjs';
 
 interface ProductRating {
   value: number;
@@ -14,7 +15,7 @@ interface ProductRating {
   styleUrls: ['./product-card.component.scss'],
   providers: [MessageService]
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent implements OnInit, OnDestroy {
   @Input() id: string = '';
   @Input() image: string = '';
   @Input() title: string = '';
@@ -26,12 +27,24 @@ export class ProductCardComponent implements OnInit {
   @Input() isChecked: boolean = false;
   @Output() checkboxChange = new EventEmitter<boolean>();
 
+  isInCart: boolean = false;
+  private cartSubscription?: Subscription;
+
   constructor(
     private cartService: CartService,
     private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
+    this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
+      this.isInCart = items.some(item => item.id === this.id);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   toggleFavorite(): void {
@@ -48,26 +61,36 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart(): void {
-    const cartItem: CartItem = {
-      id: this.id,
-      sku: this.id,
-      name: this.title,
-      description: '',
-      price: this.price,
-      image: this.image,
-      brand: '',
-      brandImage: '',
-      quantity: 1,
-      availability: 10
-    };
+    if (this.isInCart) {
+      this.cartService.removeFromCart(this.id);
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Producto removido',
+        detail: `Producto removido del carrito`,
+        life: 3000
+      });
+    } else {
+      const cartItem: CartItem = {
+        id: this.id,
+        sku: this.id,
+        name: this.title,
+        description: '',
+        price: this.price,
+        image: this.image,
+        brand: '',
+        brandImage: '',
+        quantity: 1,
+        availability: 10
+      };
 
-    this.cartService.addToCart(cartItem);
-    
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Producto añadido',
-      detail: `Producto añadido al carrito`,
-      life: 100000
-    });
+      this.cartService.addToCart(cartItem);
+      
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Producto añadido',
+        detail: `Producto añadido al carrito`,
+        life: 3000
+      });
+    }
   }
 } 
