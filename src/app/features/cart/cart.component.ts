@@ -1,49 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-
-interface Product {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  originalPrice?: number;
-  rating: {
-    value: number;
-    count: number;
-  };
-  isFavorite: boolean;
-}
-
-interface CartItem {
-  id: string;
-  sku: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  brand: string;
-  brandImage: string;
-  quantity: number;
-  availability: number;
-}
-
-interface OrderItem {
-  id: string;
-  quantity: number;
-  name: string;
-  price: number;
-}
-
-interface PaymentDetails {
-  method: string;
-  cardNumber: string;
-  cardHolder: string;
-}
-
-interface ShippingDetails {
-  address: string;
-  city: string;
-  country: string;
-}
+import { CartService } from '../../core/services/cart.service';
+import { Product, OrderItem, PaymentDetails, ShippingDetails } from './models/cart.models';
+import { CartItem } from 'src/app/core/models/cart.models';
 
 @Component({
   selector: 'app-cart',
@@ -52,6 +10,10 @@ interface ShippingDetails {
 })
 export class CartComponent implements OnInit {
   isMobile: boolean = window.innerWidth < 768;
+  cartItems: CartItem[] = [];
+  subtotal: number = 0;
+  shipping: number = 0;
+  total: number = 0;
 
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -98,65 +60,8 @@ export class CartComponent implements OnInit {
   ];
 
   selectedFrequentItems: Set<string> = new Set();
-
-  cartItems: CartItem[] = [
-    {
-      id: '1',
-      sku: '1104850',
-      name: 'Amortiguador delantero',
-      description: 'Para tu Ford Figo 2022',
-      price: 360.00,
-      image: 'assets/images/products/amortiguador.png',
-      brand: 'Arnott',
-      brandImage: 'assets/images/brands/arnott.png',
-      quantity: 2,
-      availability: 10
-    },
-    {
-      id: '1',
-      sku: '1104850',
-      name: 'Amortiguador delantero',
-      description: 'Para tu Ford Figo 2022',
-      price: 360.00,
-      image: 'assets/images/products/amortiguador.png',
-      brand: 'Arnott',
-      brandImage: 'assets/images/brands/arnott.png',
-      quantity: 2,
-      availability: 10
-    },
-    {
-      id: '1',
-      sku: '1104850',
-      name: 'Amortiguador delantero',
-      description: 'Para tu Ford Figo 2022',
-      price: 360.00,
-      image: 'assets/images/products/amortiguador.png',
-      brand: 'Arnott',
-      brandImage: 'assets/images/brands/arnott.png',
-      quantity: 2,
-      availability: 10
-    },
-    {
-      id: '1',
-      sku: '1104850',
-      name: 'Amortiguador delantero',
-      description: 'Para tu Ford Figo 2022',
-      price: 360.00,
-      image: 'assets/images/products/amortiguador.png',
-      brand: 'Arnott',
-      brandImage: 'assets/images/brands/arnott.png',
-      quantity: 2,
-      availability: 10
-    },
-  ];
-  
-  subtotal: number = 0;
-  shipping: number = 0;
-  total: number = 0;
-
   selectedProduct: CartItem | null = null;
   isProductSummaryVisible: boolean = false;
-  
   showPurchaseConfirmation: boolean = false;
   showPaymentError: boolean = false;
   orderItems: OrderItem[] = [];
@@ -171,36 +76,55 @@ export class CartComponent implements OnInit {
     country: 'México'
   };
 
+  constructor(private cartService: CartService) {}
+
   ngOnInit(): void {
-    this.calculateTotals();
-    this.prepareOrderItems();
+    this.cartService.cartItems$.subscribe(items => {
+      this.cartItems = items;
+      this.calculateTotals();
+      this.prepareOrderItems();
+    });
   }
 
   calculateTotals(): void {
-    this.subtotal = this.cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    this.subtotal = this.cartService.getCartTotal();
     this.shipping = 0;
     this.total = this.subtotal + this.shipping;
   }
 
-  updateQuantity(index: number, quantity: any): void {
-    this.cartItems[index].quantity = quantity;
-    this.calculateTotals();
+  updateQuantity(index: number, quantity: number): void {
+    const item = this.cartItems[index];
+    this.cartService.updateQuantity(item.id, quantity);
   }
 
   removeItem(index: number): void {
-    this.cartItems.splice(index, 1);
-    this.calculateTotals();
+    const item = this.cartItems[index];
+    this.cartService.removeFromCart(item.id);
   }
 
   showProductSummary(product: CartItem): void {
     this.selectedProduct = product;
     this.isProductSummaryVisible = true;
   }
-  
+
   hideProductSummary(): void {
+    this.selectedProduct = null;
     this.isProductSummaryVisible = false;
   }
-  
+
+  proceedToCheckout(): void {
+    this.showPurchaseConfirmation = true;
+  }
+
+  continueShopping(): void {
+    this.showPurchaseConfirmation = false;
+  }
+
+  retryPayment(): void {
+    this.showPaymentError = false;
+    this.proceedToCheckout();
+  }
+
   prepareOrderItems(): void {
     this.orderItems = this.cartItems.map(item => ({
       id: item.id,
@@ -208,45 +132,14 @@ export class CartComponent implements OnInit {
       name: item.name,
       price: item.price
     }));
-    
-    for (let i = 1; i <= 1; i++) {
-      this.orderItems.push({
-        id: `extra-${i}`,
-        quantity: 1,
-        name: `Producto adicional ${i}`,
-        price: 100 + (i * 10)
-      });
-    }
-    
-    this.subtotal = this.orderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    this.total = this.subtotal + this.shipping;
   }
-  
-  proceedToCheckout(): void {
-    console.log('Procediendo al checkout con producto:', this.selectedProduct);
-    this.hideProductSummary();
-    this.prepareOrderItems();
-    
-    // Simulamos un pago aleatorio (éxito o error)
-    const isPaymentSuccessful = Math.random() > 0.5;
-    
-    if (isPaymentSuccessful) {
-      this.showPurchaseConfirmation = true;
+
+  onFrequentItemSelect(itemId: string, isChecked: boolean): void {
+    if (isChecked) {
+      this.selectedFrequentItems.add(itemId);
     } else {
-      this.showPaymentError = true;
+      this.selectedFrequentItems.delete(itemId);
     }
-  }
-  
-  retryPayment(): void {
-    this.showPaymentError = false;
-    // Simulamos un segundo intento exitoso
-    this.showPurchaseConfirmation = true;
-  }
-  
-  continueShopping(): void {
-    this.showPurchaseConfirmation = false;
-    // Aquí podrías navegar a la página de inicio o de búsqueda
-    console.log('Continuando compras...');
   }
 
   addFrequentItemsToCart(): void {
@@ -265,16 +158,7 @@ export class CartComponent implements OnInit {
         availability: 10
       }));
     
-    this.cartItems.push(...itemsToAdd);
-    this.calculateTotals();
+    itemsToAdd.forEach(item => this.cartService.addToCart(item));
     this.selectedFrequentItems.clear();
-  }
-
-  onFrequentItemSelect(itemId: string, isChecked: boolean): void {
-    if (isChecked) {
-      this.selectedFrequentItems.add(itemId);
-    } else {
-      this.selectedFrequentItems.delete(itemId);
-    }
   }
 } 

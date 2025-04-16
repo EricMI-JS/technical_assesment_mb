@@ -1,4 +1,6 @@
 <div class="product-card">
+  <p-toast position="top-right"></p-toast>
+  
   <div class="product-header">
     <div class="product-header-top">
       <div class="sku">SKU: {{id}}
@@ -28,6 +30,11 @@
 
   <div class="product-price">
     <div *ngIf="originalPrice" class="original-price">{{formatPrice(originalPrice)}}</div>
-    <div class="current-price">{{formatPrice(price)}}</div>
+    <div class="current-price">
+      <span>{{formatPrice(price)}}</span>
+      <button class="add-to-cart-button" (click)="addToCart()">
+        <i class="pi pi-shopping-cart"></i>
+      </button>
+    </div>
   </div>
 </div>

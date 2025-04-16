@@ -15,6 +15,7 @@ import { StoreCardComponent } from './components/store-card/store-card.component
 import { OfficialStoresComponent } from './components/official-stores/official-stores.component';
 import { DesktopFooterComponent } from './components/desktop-footer/desktop-footer.component';
 import { DesktopHeaderComponent } from './components/desktop-header/desktop-header.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DesktopHeaderComponent } from './components/desktop-header/desktop-head
     CommonModule,
     RouterModule,
     FormsModule,
-    PrimeNGModule
+    PrimeNGModule,
+    ToastModule
   ],
   exports: [
     MobileMenuComponent,
@@ -50,7 +52,8 @@ import { DesktopHeaderComponent } from './components/desktop-header/desktop-head
     OfficialStoresComponent,
     DesktopFooterComponent,
     DesktopHeaderComponent,
-    PrimeNGModule
+    PrimeNGModule,
+    ToastModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
