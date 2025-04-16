@@ -55,8 +55,14 @@
     
     i {
       font-size: 1.6rem;
-      left: 1.7rem;
+      left: 1rem;
+      top: 1.5rem;
       color: #888;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 }
@@ -83,13 +89,13 @@
   
   .notification-badge, .cart-badge {
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 0;
-    background-color: red;
+    background-color: #ff5757;
     color: white;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,8 +107,8 @@
     background-color: #ff5757;
     width: 10px;
     height: 10px;
-    right: 8px;
-    top: 8px;
+    right: 5px;
+    top: 5px;
   }
 }
 

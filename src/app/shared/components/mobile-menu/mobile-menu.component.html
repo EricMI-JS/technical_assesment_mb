@@ -7,7 +7,7 @@
 
             <div class="search-bar">
                 <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
+                    <i class="pi pi-search" (click)="search()"></i>
                     <input type="text" pInputText [(ngModel)]="searchQuery" 
                            placeholder="Bujía Mazda 3 de 2015" 
                            (keyup.enter)="search()" />

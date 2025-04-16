@@ -59,8 +59,8 @@ export class MobileMenuComponent implements OnInit, OnDestroy {
   }
 
   search(): void {
-    if (this.searchQuery && this.searchQuery.trim().length > 0) {
-      this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/buscar'], { queryParams: { q: this.searchQuery } });
     }
   }
 
