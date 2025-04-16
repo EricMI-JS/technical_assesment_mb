@@ -13,6 +13,7 @@ export class ProductsGridComponent implements OnInit {
   @Input() limit: number = 4;
   @Input() itemsPerRow: number = 4;
   @Input() products: Product[] = [];
+  @Input() isLoading: boolean = true;
 
   @HostBinding('attr.items-per-row')
   get itemsPerRowAttr(): string {

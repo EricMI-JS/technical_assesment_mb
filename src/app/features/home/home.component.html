@@ -1,4 +1,5 @@
 <div class="home">
+    <p-toast position="top-right"></p-toast>
     <section class="banner-section">
         <app-banner-carousel></app-banner-carousel>
     </section>
@@ -14,7 +15,8 @@
                 viewAllLink="/ofertas" 
                 [limit]="5"
                 [itemsPerRow]="5"
-                [products]="productsOnSale">
+                [products]="productsOnSale"
+                [isLoading]="isLoading">
             </app-products-grid>
         </section>
 
@@ -28,7 +30,8 @@
                 viewAllLink="/ultima-visita" 
                 [limit]="5"
                 [itemsPerRow]="5"
-                [products]="lastVisitedProducts">
+                [products]="lastVisitedProducts"
+                [isLoading]="isLoading">
             </app-products-grid>
         </section>
     </div>

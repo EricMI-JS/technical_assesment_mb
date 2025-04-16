@@ -3,7 +3,7 @@
     <h2>{{title}}</h2>
   </div>
   
-  <div class="products-grid">
+  <div class="products-grid" *ngIf="!isLoading">
     <div class="product-item" *ngFor="let product of displayProducts">
       <app-product-card
         [id]="product.id"
@@ -15,5 +15,9 @@
         [isFavorite]="product.isFavorite">
       </app-product-card>
     </div>
+  </div>
+
+  <div class="loader-container" *ngIf="isLoading">
+    <div class="loader"></div>
   </div>
 </div> 

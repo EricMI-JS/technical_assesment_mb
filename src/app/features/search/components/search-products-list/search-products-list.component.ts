@@ -18,6 +18,7 @@ export class SearchProductsListComponent extends ProductsGridComponent implement
   @Input() officialStores: boolean = false;
   @Input() selectedBrand: string | null = null;
   @Input() override products: Product[] = [];
+  @Input() filteredProducts: Product[] = [];
 
   cartItems: { [key: string]: boolean } = {};
   private cartSubscription?: Subscription;
@@ -52,25 +53,7 @@ export class SearchProductsListComponent extends ProductsGridComponent implement
   }
 
   override get displayProducts() {
-    let filtered = [...this.products];
-    
-    if (this.selectedBrand) {
-      console.log(`Filtrando por marca: ${this.selectedBrand}`);
-    }
-    
-    if (this.nextDayDelivery) {
-      console.log('Filtrando por entrega al día siguiente');
-    }
-    
-    if (this.freeShipping) {
-      console.log('Filtrando por envío gratis');
-    }
-    
-    if (this.officialStores) {
-      console.log('Filtrando por tiendas oficiales');
-    }
-    
-    return filtered.slice(0, this.limit);
+    return this.filteredProducts.slice(0, this.limit);
   }
 
   onProductClick(product: Product): void {
