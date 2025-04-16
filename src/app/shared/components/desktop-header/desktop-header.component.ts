@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
+import { CartService } from '../../../core/services/cart.service';
+import { Subscription } from 'rxjs';
 
 interface CarInfo {
   brand: string;
@@ -19,7 +21,7 @@ interface MenuItem {
   templateUrl: './desktop-header.component.html',
   styleUrls: ['./desktop-header.component.scss']
 })
-export class DesktopHeaderComponent implements OnInit {
+export class DesktopHeaderComponent implements OnInit, OnDestroy {
   searchQuery: string = '';
   selectedCar: CarInfo = {
     brand: 'Ford',
@@ -36,10 +38,24 @@ export class DesktopHeaderComponent implements OnInit {
     { label: 'NGK', value: 'NGK' }
   ];
 
+  cartItemCount: number = 0;
+  private cartSubscription?: Subscription;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
+    this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
+      this.cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   search(): void {
@@ -53,7 +69,7 @@ export class DesktopHeaderComponent implements OnInit {
   }
   
   goToCart(): void {
-    this.router.navigate(['/carrito']);
+    this.router.navigate(['/cart']);
   }
   
   goToProfile(): void {

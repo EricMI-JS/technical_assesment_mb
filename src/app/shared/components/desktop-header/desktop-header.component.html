@@ -39,6 +39,7 @@
 
         <button class="action-button" (click)="goToCart()">
           <i class="pi pi-shopping-cart"></i>
+          <span class="cart-badge" *ngIf="cartItemCount > 0">{{cartItemCount}}</span>
         </button>
 
         <button class="profile-button" (click)="goToProfile()">

@@ -12,6 +12,10 @@ export class CartItemComponent {
   @Output() removeItem = new EventEmitter<void>();
   @Output() productClick = new EventEmitter<void>();
 
+  get totalPrice(): number {
+    return this.product ? this.product.price * this.quantity : 0;
+  }
+
   decreaseQuantity(): void {
     if (this.quantity > 1) {
       this.quantity--;

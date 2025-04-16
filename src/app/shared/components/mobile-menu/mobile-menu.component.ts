@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../../../core/services/cart.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mobile-menu',
   templateUrl: './mobile-menu.component.html',
   styleUrls: ['./mobile-menu.component.scss']
 })
-export class MobileMenuComponent implements OnInit {
+export class MobileMenuComponent implements OnInit, OnDestroy {
   showMenu = false;
   userCP = '42010';
   searchQuery = '';
+  cartItemCount: number = 0;
+  private cartSubscription?: Subscription;
 
   menuItems = [
     { label: 'Inicio', icon: 'pi pi-home', route: '/home' },
@@ -21,9 +25,21 @@ export class MobileMenuComponent implements OnInit {
     { label: 'Ayuda', icon: 'pi pi-question-circle', route: '/help' }
   ];
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
+    this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
+      this.cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   toggleMenu(): void {

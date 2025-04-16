@@ -1,6 +1,6 @@
 <div class="cart-item" (click)="onProductClick()">
   <div class="brand-logo">
-    <img [src]="product.brandImage" [alt]="product.brand">
+    <img [src]="product.brandImage || 'assets/images/brands/arnott.png'" [alt]="product.brand">
   </div>
 
   <div class="sku-wrapper">
@@ -18,7 +18,7 @@
 
       <div class="product-info-wrapper">
         <div class="price-wrapper">
-          <span class="price">${{product.price.toFixed(2)}}</span>
+          <span class="price">${{totalPrice.toFixed(2)}}</span>
           <span class="shipping-info">Sin cargo por envío</span>
         </div>
         <div class="quantity-wrapper">

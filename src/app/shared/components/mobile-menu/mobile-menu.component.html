@@ -20,9 +20,9 @@
                     <span class="notification-badge"></span>
                 </button>
 
-                <button class="cart-button" (click)="navigate('/cart')">
+                <button class="cart-button" (click)="navigate('/carrito')">
                     <i class="pi pi-shopping-cart"></i>
-                    <span class="cart-badge">1</span>
+                    <span class="cart-badge" *ngIf="cartItemCount > 0">{{cartItemCount}}</span>
                 </button>
             </div>
         </div>
