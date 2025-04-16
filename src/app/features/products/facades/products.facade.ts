@@ -81,7 +81,7 @@ export class ProductsFacade {
   private transformSearchResult(result: SearchResult): Product {
     return {
       id: result.unique_id,
-      image: result.imagen || this.getRandomImage(),
+      image: result.has_image ? result.imagen : this.getRandomImage(),
       title: result.titulo || result.nombre,
       price: result.precio ?? 0,
       originalPrice: result.precio ?? 0,

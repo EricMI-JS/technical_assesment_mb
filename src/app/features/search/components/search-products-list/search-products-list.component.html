@@ -1,0 +1,61 @@
+<div class="products-list">
+  <p-toast position="top-right"></p-toast>
+  
+  <div class="product-item" *ngFor="let product of displayProducts" (click)="onProductClick(product)">
+    <div class="brand-logo">
+      <div class="brand-logo-image">
+        <img [src]="'assets/images/brands/arnott.png'" alt="Marca">
+      </div>
+
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.title">
+      </div>
+    </div>
+
+    <div class="product-info">
+      <div class="product-details">
+        <h3 class="product-name">{{product.title}}</h3>
+        <div class="product-rating">
+          <span class="rating-value">{{product.rating.value}}</span>
+          <span class="rating-count">({{product.rating.count}})</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="favorite-btn" (click)="$event.stopPropagation()">
+          <div class="icon-container">
+            <img [src]="product.isFavorite ? 'assets/icons/favorite-active.svg' : 'assets/icons/favorite.svg'" 
+                 [alt]="product.isFavorite ? 'Favorito activo' : 'Favorito'" 
+                 class="favorite-icon">
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-availability">
+      <div class="shipping-info" *ngIf="freeShipping">
+        <img src="assets/icons/shipping.svg" alt="Envío gratis">
+        <span>Envío gratis</span>
+      </div>
+      <div class="delivery-info" *ngIf="nextDayDelivery">
+        <img src="assets/icons/clock.svg" alt="Entrega mañana">
+        <span>Llega mañana</span>
+      </div>
+    </div>
+
+    <div class="product-price-wrapper">
+      <div class="price-wrapper">
+        <span class="original-price" *ngIf="product.originalPrice">
+          ${{product.originalPrice.toFixed(2)}} MXN
+        </span>
+        <div class="price-and-cart">
+          <span class="price">${{product.price.toFixed(2)}} MXN</span>
+          <button class="add-to-cart-button" [class.in-cart]="isInCart(product.id)" 
+                  (click)="addToCart($event, product)">
+            <i class="pi pi-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

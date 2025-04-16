@@ -9,6 +9,7 @@ import { SelectItem } from 'primeng/api';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  viewMode: 'grid' | 'list' = 'grid';
   nextDayDelivery: boolean = false;
   freeShipping: boolean = false;
   officialStores: boolean = false;

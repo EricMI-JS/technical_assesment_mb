@@ -11,7 +11,6 @@
   <div class="checkout-content">
     <div class="checkout-form-container">
       <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-        <!-- Sección de contacto -->
         <div class="form-section" formGroupName="contact">
           <h2 class="section-title">Contacto</h2>
           
@@ -48,7 +47,6 @@
           </div>
         </div>
         
-        <!-- Sección de datos para entrega -->
         <div class="form-section" formGroupName="shipping">
           <h2 class="section-title">Datos para entrega</h2>
           
@@ -230,6 +228,11 @@
             </small>
           </div>
         </div>
+
+        <div formGroupName="payment" style="display: none;">
+          <input type="text" formControlName="cardHolder">
+          <input type="text" formControlName="cardNumber">
+        </div>
       </form>
     </div>
     
@@ -254,13 +257,13 @@
         
         <p class="info-text">Todas las transacciones son seguras y están encriptadas</p>
         
-        <!-- Sección de pago -->
-        <div class="payment-section" formGroupName="payment">
+        <div class="payment-section">
           <div class="form-field">
             <input 
               type="text" 
               pInputText 
-              formControlName="cardHolder" 
+              [ngModel]="checkoutForm.get('payment.cardHolder')?.value"
+              (ngModelChange)="checkoutForm.get('payment.cardHolder')?.setValue($event)"
               placeholder="Titular de la tarjeta"
               [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('payment.cardHolder')?.touched && checkoutForm.get('payment.cardHolder')?.invalid}"
             >
@@ -278,7 +281,8 @@
               <input 
                 type="text" 
                 pInputText 
-                formControlName="cardNumber" 
+                [ngModel]="checkoutForm.get('payment.cardNumber')?.value"
+                (ngModelChange)="checkoutForm.get('payment.cardNumber')?.setValue($event)"
                 placeholder="Número de tarjeta"
                 [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('payment.cardNumber')?.touched && checkoutForm.get('payment.cardNumber')?.invalid}"
               >
@@ -297,11 +301,11 @@
         
         <button 
           pButton 
-          type="button" 
+          type="button"
           label="Comprar" 
           class="p-button-raised checkout-button"
-          (click)="onSubmit()"
           [disabled]="checkoutForm.invalid"
+          (click)="onSubmit()"
         ></button>
         
         <div class="secure-checkout">

@@ -81,11 +81,26 @@
         <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSortOption" placeholder="Ordenar por"
           styleClass="minimal-dropdown" name="sortDropdownDesktop">
         </p-dropdown>
+
+        <div class="view-options">
+          <button class="view-button" [class.active]="viewMode === 'grid'" (click)="viewMode = 'grid'">
+            <img *ngIf="viewMode === 'grid'" src="assets/icons/grid-active.svg" alt="Vista cuadrícula activa">
+            <img *ngIf="viewMode !== 'grid'" src="assets/icons/grid.svg" alt="Vista cuadrícula">
+          </button>
+          <button class="view-button" [class.active]="viewMode === 'list'" (click)="viewMode = 'list'">
+            <img *ngIf="viewMode === 'list'" src="assets/icons/list-active.svg" alt="Vista lista activa">
+            <img *ngIf="viewMode !== 'list'" src="assets/icons/list.svg" alt="Vista lista">
+          </button>
+        </div>
       </div>
 
-      <app-search-products-grid [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
+      <app-search-products-grid *ngIf="viewMode === 'grid'" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
         [officialStores]="officialStores" [selectedBrand]="selectedBrand" [itemsPerRow]="4" [products]="products">
       </app-search-products-grid>
+
+      <app-search-products-list *ngIf="viewMode === 'list'" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
+        [officialStores]="officialStores" [selectedBrand]="selectedBrand" [products]="products">
+      </app-search-products-list>
     </main>
   </div>
 </div>

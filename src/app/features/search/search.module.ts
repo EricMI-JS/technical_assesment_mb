@@ -6,11 +6,13 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { SearchComponent } from './search.component';
 import { SearchProductsGridComponent } from './components/search-products-grid/search-products-grid.component';
+import { SearchProductsListComponent } from './components/search-products-list/search-products-list.component';
 
 @NgModule({
   declarations: [
     SearchComponent,
-    SearchProductsGridComponent
+    SearchProductsGridComponent,
+    SearchProductsListComponent
   ],
   imports: [
     CommonModule,

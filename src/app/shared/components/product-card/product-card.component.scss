@@ -161,13 +161,13 @@
       }
 
       &.in-cart {
-        background-color: #000;
-        color: #fff;
+        background-color: #D8FF00;
+        color: #000;
         padding: 8px;
         border-radius: 4px;
 
         i {
-          color: #fff;
+          color: #000;
           font-size: 1.5rem;
         }
       }
@@ -360,7 +360,13 @@
       .add-to-cart-button {
         i {
           cursor: pointer;
-          font-size: 2rem;
+          font-size: 2.5rem;
+        }
+
+        &.in-cart {
+          i {
+            font-size: 2.5rem;
+          }
         }
       }
     }
