@@ -7,7 +7,6 @@
 
     <div class="brand-form-container">
       <form [formGroup]="brandForm" (ngSubmit)="onSubmit()">
-        <!-- Información de la empresa -->
         <div class="form-section" formGroupName="companyInfo">
           <h2 class="section-title">Información de la empresa</h2>
           
@@ -64,7 +63,6 @@
           </div>
         </div>
         
-        <!-- Dirección -->
         <div class="form-section" formGroupName="address">
           <h2 class="section-title">Dirección</h2>
           
@@ -130,7 +128,6 @@
           </div>
         </div>
         
-        <!-- Consentimientos -->
         <div class="consent-section" formGroupName="consent">
           <div class="checkbox-field">
             <p-checkbox

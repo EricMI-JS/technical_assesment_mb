@@ -55,15 +55,12 @@ export class CheckoutComponent implements OnInit {
   
   onSubmit(): void {
     if (this.checkoutForm.valid) {
-      console.log('Formulario enviado:', this.checkoutForm.value);
-      // Aquí iría la lógica para procesar el pago
       this.router.navigate(['/pago/confirmacion']);
     } else {
       this.markFormGroupTouched(this.checkoutForm);
     }
   }
   
-  // Método para marcar todos los campos como 'touched' para mostrar validaciones
   private markFormGroupTouched(formGroup: FormGroup): void {
     Object.values(formGroup.controls).forEach(control => {
       control.markAsTouched();

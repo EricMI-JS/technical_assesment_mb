@@ -36,13 +36,11 @@
       </div>
 
       <div class="cart-summary" *ngIf="cartItems.length > 0">
-        <app-cart-summary [subtotal]="subtotal" [shipping]="shipping" [total]="total" [itemCount]="cartItems.length"
-          (checkout)="proceedToCheckout()">
+        <app-cart-summary [subtotal]="subtotal" [shipping]="shipping" [total]="total" [itemCount]="cartItems.length">
         </app-cart-summary>
       </div>
     </div>
 
-    <!-- Sección de Comprados Habitualmente -->
     <div class="frequently-bought-section" *ngIf="frequentlyBoughtItems.length > 0">
       <h2 class="section-title">Comprados habitualmente</h2>
       <div class="frequently-bought-items">
@@ -61,24 +59,14 @@
           </app-product-card>
           <div class="add-to-cart-action">
             <h3>Precio total:</h3>
-            <p>{{total | currency}}</p>
+            <p>{{frequentItemsTotal | currency}}</p>
             <button pButton type="button" label="Agregar al carrito" (click)="addFrequentItemsToCart()"></button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <app-product-summary [product]="selectedProduct" [isVisible]="isProductSummaryVisible" (close)="hideProductSummary()"
-    (checkout)="proceedToCheckout()">
+  <app-product-summary [product]="selectedProduct" [isVisible]="isProductSummaryVisible" (close)="hideProductSummary()">
   </app-product-summary>
-
-  <app-purchase-confirmation [(visible)]="showPurchaseConfirmation" [items]="orderItems" [subtotal]="subtotal"
-    [shipping]="shipping" [total]="total" [payment]="paymentDetails" [shippingDetails]="shippingDetails"
-    (continueShopping)="continueShopping()">
-  </app-purchase-confirmation>
-
-  <app-payment-error [(visible)]="showPaymentError" (retry)="retryPayment()">
-  </app-payment-error>
 </div>

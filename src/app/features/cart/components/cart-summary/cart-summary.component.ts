@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-summary',
@@ -10,9 +11,10 @@ export class CartSummaryComponent {
   @Input() shipping: number = 0;
   @Input() total: number = 0;
   @Input() itemCount: number = 0;
-  @Output() checkout = new EventEmitter<void>();
+
+  constructor(private router: Router) {}
 
   onCheckout(): void {
-    this.checkout.emit();
+    this.router.navigate(['/pago']);
   }
 }

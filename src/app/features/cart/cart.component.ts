@@ -60,6 +60,7 @@ export class CartComponent implements OnInit {
   ];
 
   selectedFrequentItems: Set<string> = new Set();
+  frequentItemsTotal: number = 0;
   selectedProduct: CartItem | null = null;
   isProductSummaryVisible: boolean = false;
   showPurchaseConfirmation: boolean = false;
@@ -140,6 +141,13 @@ export class CartComponent implements OnInit {
     } else {
       this.selectedFrequentItems.delete(itemId);
     }
+    this.calculateFrequentItemsTotal();
+  }
+
+  calculateFrequentItemsTotal(): void {
+    this.frequentItemsTotal = this.frequentlyBoughtItems
+      .filter(product => this.selectedFrequentItems.has(product.id))
+      .reduce((total, product) => total + product.price, 0);
   }
 
   addFrequentItemsToCart(): void {

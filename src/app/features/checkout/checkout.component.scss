@@ -1,154 +1,304 @@
 .checkout-container {
-  padding: 2rem;
-  background-color: #f8f9fa;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 0;
 
   .checkout-header {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 2rem;
 
     .back-button {
       margin-right: 1rem;
-      
+
       a {
-        color: #000;
+        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        border-radius: 50%;
+        padding: .5rem;
         text-decoration: none;
-        
+
         i {
-          font-size: 1.5rem;
+          color: #fff;
+          font-size: 1.3rem;
+
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
         }
       }
     }
 
     .checkout-title {
-      font-size: 1.5rem;
       margin: 0;
-      font-weight: 500;
+      font-size: 1.8rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
     }
   }
 
   .checkout-content {
     display: flex;
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
 
-    .checkout-form-container {
-      flex: 1;
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
 
-      form {
-        .form-section {
-          margin-bottom: 2rem;
+  .checkout-form-container {
+    flex: 3;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: fit-content;
 
-          .section-title {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
+    @media (max-width: 768px) {
+      margin: 0;
+      width: 100%;
+    }
+
+    form {
+      .form-section {
+        margin-bottom: 2rem;
+
+        .section-title {
+          font-size: 1.8rem;
+          margin-bottom: 1.5rem;
+
+          @media (max-width: 768px) {
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+      .form-field {
+        margin-bottom: 2rem;
+
+        input,
+        p-dropdown {
+          width: 100%;
+          font-size: 1.8rem;
+
+          @media (max-width: 768px) {
+            font-size: 1.5rem;
+          }
+
+          &:focus {
+            outline: none;
+            border-color: #2196F3;
           }
         }
 
-        .form-field {
-          margin-bottom: 1rem;
+        small {
+          color: #f44336;
+          font-size: 1.2rem;
+          margin-top: 0.25rem;
+          display: block;
 
-          input, p-dropdown {
-            width: 100%;
+          @media (max-width: 768px) {
+            font-size: 1rem;
           }
         }
+      }
 
-        .form-row {
-          display: flex;
-          gap: 1rem;
+      .form-row {
+        display: grid;
+        gap: 1rem;
 
-          .form-field {
-            flex: 1;
-          }
+        @media (max-width: 480px) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .form-row-2 {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .form-row-3 {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      
+    }
+  }
+
+  .order-summary-wrapper {
+    flex: 1.5;
+
+  }
+
+  .order-summary-mobile {
+    display: none;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+
+      &.total {
+        font-weight: bold;
+        font-size: 2rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #ddd;
+
+        @media (max-width: 768px) {
+          font-size: 1.6rem;
         }
       }
     }
+  }
 
-    .order-summary-container {
-      width: 400px;
+  .order-summary {
+    top: 2rem;
 
-      .order-summary {
-        background: white;
-        border-radius: 8px;
-        padding: 2rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    .summary-title {
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #fff;
+      font-size: 1.8rem;
+      margin: 0;
+      margin-bottom: 1rem;
 
-        .summary-title {
-          font-size: 1.2rem;
-          margin-bottom: 1.5rem;
-          font-weight: 500;
-        }
-
-        .summary-row {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 1rem;
-          color: #666;
-
-          &.total {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-            font-weight: bold;
-            color: #000;
-          }
-        }
-
-        .info-text {
-          color: #666;
-          font-size: 0.9rem;
-          margin: 1rem 0;
-          text-align: center;
-        }
-
-        .payment-section {
-          margin-top: 1.5rem;
-
-          .card-number-field {
-            position: relative;
-
-            .card-type {
-              position: absolute;
-              right: 10px;
-              top: 50%;
-              transform: translateY(-50%);
-
-              img {
-                height: 20px;
-              }
-            }
-          }
-        }
-
-        .checkout-button {
-          width: 100%;
-          margin: 1rem 0;
-          background-color: #000;
-          border: none;
-          padding: 1rem;
-          font-size: 1rem;
-        }
-
-        .secure-checkout {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          color: #666;
-          font-size: 0.9rem;
-
-          i {
-            color: #28a745;
-          }
-        }
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
       }
+    }
+
+    .summary-content {
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.8rem;
+
+      .summary-label {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+
+    }
+
+    hr {
+      margin: 2rem 0;
+      border: 0;
+      border-top: 2px solid #ddd;
+    }
+
+    .info-text {
+      font-size: 1.2rem;
+      color: #000;
+      margin: 1rem 0;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .payment-section {
+    margin: 1.5rem 0;
+
+    .card-number-field {
+      position: relative;
+    }
+
+    .form-field {
+      width: 100%;
+      margin-bottom: 1rem;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .checkout-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+
+
+    .checkout-button {
+      padding: 1rem 2.5rem;
+      font-weight: 100;
+      font-size: 1.8rem;
+      margin: 1rem 0;
+      background-color: #000;
+      color: #fff;
+      border: none;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    ::ng-deep .p-button .p-button-label {
+      letter-spacing: 0.1rem;
+      font-weight: lighter !important;
+    }
+  }
+
+  .secure-checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 1rem;
+    background-color: #D8FF00;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    color: #000;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+
+    i {
+      color: #000;
+    }
+  }
+
+  // Estilos para inputs inválidos
+  .ng-invalid.ng-dirty {
+    border-color: #f44336 !important;
+  }
+
+  // Estilos para el dropdown de estados
+  :host ::ng-deep {
+    .p-dropdown {
+      width: 100%;
     }
   }
 }
@@ -156,9 +306,13 @@
 :host ::ng-deep {
   .p-inputtext {
     padding: 0.75rem;
-    font-size: 1rem;
+    font-size: 1.8rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
 
     &:focus {
       box-shadow: none;
@@ -167,14 +321,6 @@
 
     &.ng-invalid.ng-dirty {
       border-color: #dc3545;
-    }
-  }
-
-  .p-dropdown {
-    width: 100%;
-    
-    .p-dropdown-label {
-      padding: 0.75rem;
     }
   }
 
@@ -187,7 +333,11 @@
 
   .p-error {
     color: #dc3545;
-    font-size: 0.875rem;
+    font-size: 1.2rem;
     margin-top: 0.25rem;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
-} 
+}

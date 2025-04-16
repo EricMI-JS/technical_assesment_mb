@@ -41,7 +41,6 @@ export class BrandRegistrationComponent implements OnInit {
   onSubmit(): void {
     if (this.brandForm.valid) {
       console.log('Formulario enviado:', this.brandForm.value);
-      // Aquí iría la lógica para registrar la marca
       this.router.navigate(['/registro-marca/exito']);
     } else {
       this.markFormGroupTouched(this.brandForm);
@@ -51,8 +50,6 @@ export class BrandRegistrationComponent implements OnInit {
   onFileSelected(event: any, controlName: string): void {
     const file = event.target.files[0];
     if (file) {
-      // En un caso real, aquí subiríamos el archivo al servidor
-      // y guardaríamos la referencia en el formulario
       const control = controlName === 'csf' ? 
         this.brandForm.get('companyInfo.csf') : 
         this.brandForm.get('companyInfo.officialId');
@@ -63,7 +60,6 @@ export class BrandRegistrationComponent implements OnInit {
     }
   }
   
-  // Método para marcar todos los campos como 'touched' para mostrar validaciones
   private markFormGroupTouched(formGroup: FormGroup): void {
     Object.values(formGroup.controls).forEach(control => {
       control.markAsTouched();

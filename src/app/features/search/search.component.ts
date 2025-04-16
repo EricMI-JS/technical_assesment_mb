@@ -69,7 +69,6 @@ export class SearchComponent implements OnInit {
   getFilteredProducts(): Product[] {
     let filtered = [...this.products];
     
-    // Aplicar ordenamiento
     if (this.selectedSortOption === 'price_asc') {
       filtered.sort((a, b) => a.price - b.price);
     } else if (this.selectedSortOption === 'price_desc') {

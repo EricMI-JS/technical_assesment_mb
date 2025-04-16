@@ -9,224 +9,172 @@
   </div>
 
   <div class="checkout-content">
+    <div class="order-summary-mobile">
+      <div class="summary-row">
+        <span class="summary-label">Subtotal({{orderSummary.items}})</span>
+        <span class="summary-value">${{orderSummary.subtotal.toFixed(2)}} MXN</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Envío</span>
+        <span class="summary-value">${{orderSummary.shipping.toFixed(2)}} MXN</span>
+      </div>
+      <div class="summary-row total">
+        <span class="summary-label">TOTAL</span>
+        <span class="summary-value">${{orderSummary.total.toFixed(2)}} MXN</span>
+      </div>
+    </div>
+
     <div class="checkout-form-container">
       <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
         <div class="form-section" formGroupName="contact">
           <h2 class="section-title">Contacto</h2>
-          
+
           <div class="form-field">
-            <input 
-              type="email" 
-              pInputText 
-              formControlName="email" 
-              placeholder="Correo electrónico"
-              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('contact.email')?.touched && checkoutForm.get('contact.email')?.invalid}"
-            >
-            <small 
-              *ngIf="checkoutForm.get('contact.email')?.touched && checkoutForm.get('contact.email')?.invalid" 
-              class="p-error"
-            >
+            <input type="email" pInputText formControlName="email" placeholder="Correo electrónico"
+              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('contact.email')?.touched && checkoutForm.get('contact.email')?.invalid}">
+            <small *ngIf="checkoutForm.get('contact.email')?.touched && checkoutForm.get('contact.email')?.invalid"
+              class="p-error">
               Correo electrónico inválido
             </small>
           </div>
-          
+
           <div class="form-field">
-            <input 
-              type="tel" 
-              pInputText 
-              formControlName="phone" 
-              placeholder="Teléfono"
-              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('contact.phone')?.touched && checkoutForm.get('contact.phone')?.invalid}"
-            >
-            <small 
-              *ngIf="checkoutForm.get('contact.phone')?.touched && checkoutForm.get('contact.phone')?.invalid" 
-              class="p-error"
-            >
+            <input type="tel" pInputText formControlName="phone" placeholder="Teléfono"
+              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('contact.phone')?.touched && checkoutForm.get('contact.phone')?.invalid}">
+            <small *ngIf="checkoutForm.get('contact.phone')?.touched && checkoutForm.get('contact.phone')?.invalid"
+              class="p-error">
               Teléfono requerido
             </small>
           </div>
         </div>
-        
+
         <div class="form-section" formGroupName="shipping">
           <h2 class="section-title">Datos para entrega</h2>
-          
-          <div class="form-row">
+
+          <div class="form-row form-row-2">
             <div class="form-field">
-              <input 
-                type="text" 
-                pInputText 
-                formControlName="firstName" 
-                placeholder="Nombre"
-                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.firstName')?.touched && checkoutForm.get('shipping.firstName')?.invalid}"
-              >
-              <small 
-                *ngIf="checkoutForm.get('shipping.firstName')?.touched && checkoutForm.get('shipping.firstName')?.invalid" 
-                class="p-error"
-              >
+              <input type="text" pInputText formControlName="firstName" placeholder="Nombre"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.firstName')?.touched && checkoutForm.get('shipping.firstName')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('shipping.firstName')?.touched && checkoutForm.get('shipping.firstName')?.invalid"
+                class="p-error">
                 Campo requerido
               </small>
             </div>
-            
+
             <div class="form-field">
-              <input 
-                type="text" 
-                pInputText 
-                formControlName="lastName" 
-                placeholder="Apellido"
-                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.lastName')?.touched && checkoutForm.get('shipping.lastName')?.invalid}"
-              >
-              <small 
-                *ngIf="checkoutForm.get('shipping.lastName')?.touched && checkoutForm.get('shipping.lastName')?.invalid" 
-                class="p-error"
-              >
+              <input type="text" pInputText formControlName="lastName" placeholder="Apellido"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.lastName')?.touched && checkoutForm.get('shipping.lastName')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('shipping.lastName')?.touched && checkoutForm.get('shipping.lastName')?.invalid"
+                class="p-error">
                 Campo requerido
               </small>
             </div>
           </div>
-          
-          <div class="form-field">
-            <input 
-              type="text" 
-              pInputText 
-              formControlName="street" 
-              placeholder="Calle"
-              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.street')?.touched && checkoutForm.get('shipping.street')?.invalid}"
-            >
-            <small 
-              *ngIf="checkoutForm.get('shipping.street')?.touched && checkoutForm.get('shipping.street')?.invalid" 
-              class="p-error"
-            >
-              Campo requerido
-            </small>
-          </div>
-          
-          <div class="form-row">
+
+          <div class="form-row form-row-3">
             <div class="form-field">
-              <input 
-                type="text" 
-                pInputText 
-                formControlName="extNumber" 
-                placeholder="Número exterior"
-                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.extNumber')?.touched && checkoutForm.get('shipping.extNumber')?.invalid}"
-              >
-              <small 
-                *ngIf="checkoutForm.get('shipping.extNumber')?.touched && checkoutForm.get('shipping.extNumber')?.invalid" 
-                class="p-error"
-              >
+              <input type="text" pInputText formControlName="street" placeholder="Calle"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.street')?.touched && checkoutForm.get('shipping.street')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('shipping.street')?.touched && checkoutForm.get('shipping.street')?.invalid"
+                class="p-error">
                 Campo requerido
               </small>
             </div>
-            
+
             <div class="form-field">
-              <input 
-                type="text" 
-                pInputText 
-                formControlName="intNumber" 
-                placeholder="Número interior"
-              >
-            </div>
-          </div>
-          
-          <div class="form-field">
-            <input 
-              type="text" 
-              pInputText 
-              formControlName="neighborhood" 
-              placeholder="Colonia"
-              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.neighborhood')?.touched && checkoutForm.get('shipping.neighborhood')?.invalid}"
-            >
-            <small 
-              *ngIf="checkoutForm.get('shipping.neighborhood')?.touched && checkoutForm.get('shipping.neighborhood')?.invalid" 
-              class="p-error"
-            >
-              Campo requerido
-            </small>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-field">
-              <input 
-                type="text" 
-                pInputText 
-                formControlName="zipCode" 
-                placeholder="Código postal"
-                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.zipCode')?.touched && checkoutForm.get('shipping.zipCode')?.invalid}"
-              >
-              <small 
-                *ngIf="checkoutForm.get('shipping.zipCode')?.touched && checkoutForm.get('shipping.zipCode')?.invalid" 
-                class="p-error"
-              >
+              <input type="text" pInputText formControlName="extNumber" placeholder="Número exterior"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.extNumber')?.touched && checkoutForm.get('shipping.extNumber')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('shipping.extNumber')?.touched && checkoutForm.get('shipping.extNumber')?.invalid"
+                class="p-error">
                 Campo requerido
               </small>
             </div>
-            
+
             <div class="form-field">
-              <input 
-                type="text" 
-                pInputText 
-                formControlName="city" 
-                placeholder="Ciudad"
-                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.city')?.touched && checkoutForm.get('shipping.city')?.invalid}"
-              >
-              <small 
-                *ngIf="checkoutForm.get('shipping.city')?.touched && checkoutForm.get('shipping.city')?.invalid" 
-                class="p-error"
-              >
+              <input type="text" pInputText formControlName="intNumber" placeholder="Número interior">
+            </div>
+          </div>
+
+          <div class="form-row form-row-3">
+            <div class="form-field">
+              <input type="text" pInputText formControlName="neighborhood" placeholder="Colonia"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.neighborhood')?.touched && checkoutForm.get('shipping.neighborhood')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('shipping.neighborhood')?.touched && checkoutForm.get('shipping.neighborhood')?.invalid"
+                class="p-error">
+                Campo requerido
+              </small>
+            </div>
+
+            <div class="form-field">
+              <input type="text" pInputText formControlName="zipCode" placeholder="Código postal"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.zipCode')?.touched && checkoutForm.get('shipping.zipCode')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('shipping.zipCode')?.touched && checkoutForm.get('shipping.zipCode')?.invalid"
+                class="p-error">
+                Campo requerido
+              </small>
+            </div>
+
+            <div class="form-field">
+              <input type="text" pInputText formControlName="city" placeholder="Ciudad"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.city')?.touched && checkoutForm.get('shipping.city')?.invalid}">
+              <small *ngIf="checkoutForm.get('shipping.city')?.touched && checkoutForm.get('shipping.city')?.invalid"
+                class="p-error">
                 Campo requerido
               </small>
             </div>
           </div>
-          
-          <div class="form-field">
-            <p-dropdown 
-              formControlName="state" 
-              [options]="[
-                {label: 'Selecciona estado', value: ''},
-                {label: 'Aguascalientes', value: 'AGS'},
-                {label: 'Baja California', value: 'BC'},
-                {label: 'Baja California Sur', value: 'BCS'},
-                {label: 'Campeche', value: 'CAMP'},
-                {label: 'Ciudad de México', value: 'CDMX'},
-                {label: 'Chiapas', value: 'CHIS'},
-                {label: 'Chihuahua', value: 'CHIH'},
-                {label: 'Coahuila', value: 'COAH'},
-                {label: 'Colima', value: 'COL'},
-                {label: 'Durango', value: 'DGO'},
-                {label: 'Estado de México', value: 'MEX'},
-                {label: 'Guanajuato', value: 'GTO'},
-                {label: 'Guerrero', value: 'GRO'},
-                {label: 'Hidalgo', value: 'HGO'},
-                {label: 'Jalisco', value: 'JAL'},
-                {label: 'Michoacán', value: 'MICH'},
-                {label: 'Morelos', value: 'MOR'},
-                {label: 'Nayarit', value: 'NAY'},
-                {label: 'Nuevo León', value: 'NL'},
-                {label: 'Oaxaca', value: 'OAX'},
-                {label: 'Puebla', value: 'PUE'},
-                {label: 'Querétaro', value: 'QRO'},
-                {label: 'Quintana Roo', value: 'QROO'},
-                {label: 'San Luis Potosí', value: 'SLP'},
-                {label: 'Sinaloa', value: 'SIN'},
-                {label: 'Sonora', value: 'SON'},
-                {label: 'Tabasco', value: 'TAB'},
-                {label: 'Tamaulipas', value: 'TAMPS'},
-                {label: 'Tlaxcala', value: 'TLAX'},
-                {label: 'Veracruz', value: 'VER'},
-                {label: 'Yucatán', value: 'YUC'},
-                {label: 'Zacatecas', value: 'ZAC'}
-              ]" 
-              placeholder="Selecciona estado"
-              optionLabel="label"
-              [style]="{'width':'100%'}"
-              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.state')?.touched && checkoutForm.get('shipping.state')?.invalid}"
-            ></p-dropdown>
-            <small 
-              *ngIf="checkoutForm.get('shipping.state')?.touched && checkoutForm.get('shipping.state')?.invalid" 
-              class="p-error"
-            >
-              Campo requerido
-            </small>
+
+          <div class="form-row form-row-3">
+            <div class="form-field">
+              <p-dropdown formControlName="state" [options]="[
+                  {label: 'Selecciona estado', value: ''},
+                  {label: 'Aguascalientes', value: 'AGS'},
+                  {label: 'Baja California', value: 'BC'},
+                  {label: 'Baja California Sur', value: 'BCS'},
+                  {label: 'Campeche', value: 'CAMP'},
+                  {label: 'Ciudad de México', value: 'CDMX'},
+                  {label: 'Chiapas', value: 'CHIS'},
+                  {label: 'Chihuahua', value: 'CHIH'},
+                  {label: 'Coahuila', value: 'COAH'},
+                  {label: 'Colima', value: 'COL'},
+                  {label: 'Durango', value: 'DGO'},
+                  {label: 'Estado de México', value: 'MEX'},
+                  {label: 'Guanajuato', value: 'GTO'},
+                  {label: 'Guerrero', value: 'GRO'},
+                  {label: 'Hidalgo', value: 'HGO'},
+                  {label: 'Jalisco', value: 'JAL'},
+                  {label: 'Michoacán', value: 'MICH'},
+                  {label: 'Morelos', value: 'MOR'},
+                  {label: 'Nayarit', value: 'NAY'},
+                  {label: 'Nuevo León', value: 'NL'},
+                  {label: 'Oaxaca', value: 'OAX'},
+                  {label: 'Puebla', value: 'PUE'},
+                  {label: 'Querétaro', value: 'QRO'},
+                  {label: 'Quintana Roo', value: 'QROO'},
+                  {label: 'San Luis Potosí', value: 'SLP'},
+                  {label: 'Sinaloa', value: 'SIN'},
+                  {label: 'Sonora', value: 'SON'},
+                  {label: 'Tabasco', value: 'TAB'},
+                  {label: 'Tamaulipas', value: 'TAMPS'},
+                  {label: 'Tlaxcala', value: 'TLAX'},
+                  {label: 'Veracruz', value: 'VER'},
+                  {label: 'Yucatán', value: 'YUC'},
+                  {label: 'Zacatecas', value: 'ZAC'}
+                ]" placeholder="Selecciona estado" optionLabel="label" [style]="{'width':'100%'}"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.state')?.touched && checkoutForm.get('shipping.state')?.invalid}"></p-dropdown>
+              <small *ngIf="checkoutForm.get('shipping.state')?.touched && checkoutForm.get('shipping.state')?.invalid"
+                class="p-error">
+                Campo requerido
+              </small>
+            </div>
           </div>
+
         </div>
 
         <div formGroupName="payment" style="display: none;">
@@ -235,79 +183,67 @@
         </div>
       </form>
     </div>
-    
-    <div class="order-summary-container">
+
+    <div class="order-summary-wrapper">
       <div class="order-summary">
         <h2 class="summary-title">Resumen de compra</h2>
-        
-        <div class="summary-row">
-          <span class="summary-label">Subtotal ({{orderSummary.items}})</span>
-          <span class="summary-value">${{orderSummary.subtotal.toFixed(2)}} MXN</span>
-        </div>
-        
-        <div class="summary-row">
-          <span class="summary-label">Envío</span>
-          <span class="summary-value">${{orderSummary.shipping.toFixed(2)}} MXN</span>
-        </div>
-        
-        <div class="summary-row total">
-          <span class="summary-label">TOTAL</span>
-          <span class="summary-value">${{orderSummary.total.toFixed(2)}} MXN</span>
-        </div>
-        
-        <p class="info-text">Todas las transacciones son seguras y están encriptadas</p>
-        
-        <div class="payment-section">
-          <div class="form-field">
-            <input 
-              type="text" 
-              pInputText 
-              [ngModel]="checkoutForm.get('payment.cardHolder')?.value"
-              (ngModelChange)="checkoutForm.get('payment.cardHolder')?.setValue($event)"
-              placeholder="Titular de la tarjeta"
-              [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('payment.cardHolder')?.touched && checkoutForm.get('payment.cardHolder')?.invalid}"
-            >
-            <small 
-              *ngIf="checkoutForm.get('payment.cardHolder')?.touched && checkoutForm.get('payment.cardHolder')?.invalid" 
-              class="p-error"
-            >
-              Campo requerido
-            </small>
+
+        <div class="summary-content">
+          <div class="summary-row">
+            <span class="summary-label">Subtotal <span> ({{orderSummary.items}})</span></span>
+            <span class="summary-value">${{orderSummary.subtotal.toFixed(2)}} MXN</span>
           </div>
-          
-          <div class="form-field card-number-field">
-            <span class="p-input-icon-right">
-              <i class="pi pi-lock"></i>
-              <input 
-                type="text" 
-                pInputText 
-                [ngModel]="checkoutForm.get('payment.cardNumber')?.value"
+
+          <hr>
+
+          <div class="summary-row">
+            <span class="summary-label">Envío</span>
+            <span class="summary-value">${{orderSummary.shipping.toFixed(2)}} MXN</span>
+          </div>
+
+          <hr>
+
+          <div class="summary-row total">
+            <span class="summary-label">TOTAL</span>
+            <span class="summary-value">${{orderSummary.total.toFixed(2)}} MXN</span>
+          </div>
+
+          <hr>
+
+          <p class="info-text">Todas las transacciones son seguras y están encriptadas</p>
+
+          <div class="payment-section">
+            <div class="form-field">
+              <input type="text" pInputText [ngModel]="checkoutForm.get('payment.cardHolder')?.value"
+                (ngModelChange)="checkoutForm.get('payment.cardHolder')?.setValue($event)"
+                placeholder="Titular de la tarjeta"
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('payment.cardHolder')?.touched && checkoutForm.get('payment.cardHolder')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('payment.cardHolder')?.touched && checkoutForm.get('payment.cardHolder')?.invalid"
+                class="p-error">
+                Campo requerido
+              </small>
+            </div>
+
+            <div class="form-field card-number-field">
+              <input type="text" pInputText [ngModel]="checkoutForm.get('payment.cardNumber')?.value"
                 (ngModelChange)="checkoutForm.get('payment.cardNumber')?.setValue($event)"
                 placeholder="Número de tarjeta"
-                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('payment.cardNumber')?.touched && checkoutForm.get('payment.cardNumber')?.invalid}"
-              >
-            </span>
-            <small 
-              *ngIf="checkoutForm.get('payment.cardNumber')?.touched && checkoutForm.get('payment.cardNumber')?.invalid" 
-              class="p-error"
-            >
-              Número de tarjeta inválido
-            </small>
-            <div class="card-type">
-              <img src="assets/images/visa-logo.png" alt="Visa" class="card-type-icon">
+                [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('payment.cardNumber')?.touched && checkoutForm.get('payment.cardNumber')?.invalid}">
+              <small
+                *ngIf="checkoutForm.get('payment.cardNumber')?.touched && checkoutForm.get('payment.cardNumber')?.invalid"
+                class="p-error">
+                Número de tarjeta inválido
+              </small>
             </div>
           </div>
+
+          <div class="checkout-button-container">
+            <button class="checkout-button" pButton type="button" label="Comprar"
+              (click)="onSubmit()"></button>
+          </div>
         </div>
-        
-        <button 
-          pButton 
-          type="button"
-          label="Comprar" 
-          class="p-button-raised checkout-button"
-          [disabled]="checkoutForm.invalid"
-          (click)="onSubmit()"
-        ></button>
-        
+
         <div class="secure-checkout">
           <i class="pi pi-shield"></i>
           <span>Compra 100% segura</span>
@@ -315,4 +251,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
