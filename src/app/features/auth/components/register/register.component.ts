@@ -5,15 +5,16 @@ import { MessageService } from 'primeng/api';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
   providers: [MessageService]
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
   loading = false;
   showPassword = false;
+  showConfirmPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -21,11 +22,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private messageService: MessageService
   ) {
-    this.loginForm = this.fb.group({
+    this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
       rememberMe: [false]
-    });
+    }, { validator: this.passwordMatchValidator });
   }
 
   ngOnInit(): void {
@@ -35,15 +37,15 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.loginForm.valid) {
+    if (this.registerForm.valid) {
       this.loading = true;
       try {
-        const { email, password } = this.loginForm.value;
-        await this.authService.login(email, password);
+        const { email, password } = this.registerForm.value;
+        await this.authService.register(email, password);
         this.messageService.add({
           severity: 'success',
           summary: 'Éxito',
-          detail: 'Inicio de sesión exitoso'
+          detail: 'Registro exitoso'
         });
         this.router.navigate(['/']);
       } catch (error: any) {
@@ -62,18 +64,27 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
+  private passwordMatchValidator(g: FormGroup) {
+    return g.get('password')?.value === g.get('confirmPassword')?.value
+      ? null : { 'mismatch': true };
+  }
+
   private getErrorMessage(errorCode: string): string {
     switch (errorCode) {
-      case 'auth/user-not-found':
-        return 'No existe una cuenta con este correo electrónico';
-      case 'auth/wrong-password':
-        return 'Contraseña incorrecta';
+      case 'auth/email-already-in-use':
+        return 'Ya existe una cuenta con este correo electrónico';
       case 'auth/invalid-email':
         return 'Correo electrónico inválido';
-      case 'auth/too-many-requests':
-        return 'Demasiados intentos fallidos. Por favor, intente más tarde';
+      case 'auth/operation-not-allowed':
+        return 'El registro con correo electrónico no está habilitado';
+      case 'auth/weak-password':
+        return 'La contraseña es demasiado débil';
       default:
-        return 'Error al iniciar sesión. Por favor, intente nuevamente';
+        return 'Error al registrar. Por favor, intente nuevamente';
     }
   }
 } 

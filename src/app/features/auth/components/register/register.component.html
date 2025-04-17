@@ -15,14 +15,14 @@
             <a href="/">
                 <i class="pi pi-arrow-left"></i>
             </a>
-            <h2 class="title">Inicia sesión</h2>
+            <h2 class="title">Crear cuenta</h2>
         </div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
             <div class="form-group">
-                <label for="email">Email o nombre de usuario</label>
+                <label for="email">Email</label>
                 <span class="p-input-icon-left">
                     <input type="text" pInputText id="email" formControlName="email"
-                        placeholder="Email o nombre de usuario">
+                        placeholder="Email">
                 </span>
             </div>
 
@@ -36,27 +36,36 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar contraseña</label>
+                <div class="password-container">
+                    <input [type]="showConfirmPassword ? 'text' : 'password'" pInputText id="confirmPassword"
+                        formControlName="confirmPassword" placeholder="Confirmar contraseña">
+                    <i class="pi" [ngClass]="showConfirmPassword ? 'pi-eye-slash' : 'pi-eye'"
+                        (click)="toggleConfirmPasswordVisibility()"></i>
+                </div>
+                <small class="p-error" *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">
+                    Las contraseñas no coinciden
+                </small>
+            </div>
+
             <div class="switch-container">
                 <p-inputSwitch formControlName="rememberMe"></p-inputSwitch>
                 <label>Recuerdame</label>
             </div>
 
-            <button pButton type="submit" class="primary-button" [loading]="loading" [disabled]="loading || !loginForm.valid">
-                Iniciar sesión
+            <button pButton type="submit" class="primary-button" [loading]="loading" [disabled]="loading || !registerForm.valid">
+                Registrarse
             </button>
-            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
         </form>
 
         <div class="no-account">
-            <p class="no-account-text">¿No tienes una cuenta?</p>
-            <div class="register-buttons">
-                <button pButton type="button" class="secondary-button" routerLink="/registro-marca">Registrar marca</button>
-                <button pButton type="button" class="secondary-button" routerLink="/register">Registrarse</button>
-            </div>
+            <p class="no-account-text">¿Ya tienes una cuenta?</p>
+            <button pButton type="button" class="secondary-button" routerLink="/login">Iniciar sesión</button>
         </div>
 
         <div class="social-login">
-            <p class="social-login-text">Inicia sesión con tus redes sociales</p>
+            <p class="social-login-text">Regístrate con tus redes sociales</p>
 
             <div class="social-icons">
                 <button pButton type="button" class="social-icon-button google">
@@ -75,4 +84,4 @@
     </div>
 </div>
 
-<p-toast></p-toast>
+<p-toast></p-toast> 

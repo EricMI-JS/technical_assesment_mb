@@ -29,6 +29,15 @@ export class AuthService {
     }
   }
 
+  async register(email: string, password: string): Promise<any> {
+    try {
+      const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async logout(): Promise<void> {
     try {
       await this.afAuth.signOut();
