@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 interface OrderItem {
   id: string;
@@ -38,18 +39,16 @@ export class PurchaseConfirmationComponent implements OnInit {
     country: 'México'
   };
   
-  @Output() visibleChange = new EventEmitter<boolean>();
-  @Output() continueShopping = new EventEmitter<void>();
-  
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private dialogRef: DynamicDialogRef
+  ) {}
 
   ngOnInit(): void {
   }
   
-  hideModal(): void {
-  }
-  
   continueShoppingClick(): void {
+    this.dialogRef.close();
     this.router.navigate(['/']);
   }
 } 

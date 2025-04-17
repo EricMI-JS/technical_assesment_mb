@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-payment-error',
@@ -6,17 +7,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./payment-error.component.scss']
 })
 export class PaymentErrorComponent {
-  @Input() visible: boolean = false;
-  
-  @Output() visibleChange = new EventEmitter<boolean>();
-  @Output() retry = new EventEmitter<void>();
-  
-  hideModal(): void {
-    this.visible = false;
-    this.visibleChange.emit(this.visible);
-  }
-  
+  constructor(private dialogRef: DynamicDialogRef) {}
+
   retryPayment(): void {
-    this.retry.emit();
+    this.dialogRef.close();
   }
 } 

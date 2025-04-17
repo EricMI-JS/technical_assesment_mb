@@ -36,6 +36,10 @@
     .pi-times {
       color: #000;
       font-size: 1.9rem;
+
+      @media (min-width: 1024px) {
+        font-size: 2.2rem;
+      }
     }
   }
 
@@ -46,6 +50,10 @@
     max-width: 23rem;
     text-align: center;
     color: #242731;
+
+    @media (min-width: 1024px) {
+      max-width: 28rem;
+    }
   }
 
   .error-message {
@@ -58,12 +66,20 @@
     color: #333;
     margin: 0 0 8px 0;
     line-height: 1.3;
+
+    @media (min-width: 1024px) {
+      font-size: 2rem;
+    }
   }
 
   .error-description {
     font-size: 1rem;
     color: #666;
     margin: 0;
+
+    @media (min-width: 1024px) {
+      font-size: 1.4rem;
+    }
   }
 
   .error-icon {
@@ -76,6 +92,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 1024px) {
+      width: 120px;
+      height: 120px;
+    }
   }
 
   .error-actions {
@@ -98,6 +119,11 @@
     max-width: 160px;
     margin: auto;
     
+    @media (min-width: 1024px) {
+      font-size: 1.6rem;
+      max-width: 200px;
+    }
+
     &:hover {
       background-color: #333;
     }

@@ -1,4 +1,6 @@
 <div class="search-page-container">
+  <h3 class="search-title">Resultados de búsqueda</h3>
+  <p *ngIf="totalResults > 0" class="search-results-count">{{ totalResults | number:'1.0-0' }} resultados</p>
   <p-toast position="top-right"></p-toast>
   <div class="filters-mobile">
     <form #filterForm="ngForm">

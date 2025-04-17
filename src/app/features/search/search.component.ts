@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   nextDayDelivery: boolean = false;
   freeShipping: boolean = false;
   officialStores: boolean = false;
+  totalResults: number = 0;
 
   brands: SelectItem[] = [
     { label: 'Autolite', value: 'Autolite' },
@@ -75,6 +76,7 @@ export class SearchComponent implements OnInit {
       filtered.sort((a, b) => b.price - a.price);
     }
     
+    this.totalResults = filtered.length;
     return filtered;
   }
 } 
