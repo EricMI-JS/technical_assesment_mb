@@ -17,5 +17,7 @@
   ::ng-deep swiper-slide {
     height: auto;
     display: flex;
+    width: auto !important;
+    margin-right: 1.5rem !important;
   }
 } 
