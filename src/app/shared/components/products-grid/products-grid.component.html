@@ -4,17 +4,25 @@
   </div>
   
   <div class="products-grid" *ngIf="!isLoading">
-    <div class="product-item" *ngFor="let product of displayProducts">
-      <app-product-card
-        [id]="product.id"
-        [image]="product.image"
-        [title]="product.title"
-        [price]="product.price"
-        [originalPrice]="product.originalPrice"
-        [rating]="product.rating"
-        [isFavorite]="product.isFavorite">
-      </app-product-card>
-    </div>
+    <ng-container *ngFor="let product of displayProducts; let i = index">
+      <div class="product-item">
+        <app-product-card
+          [id]="product.id"
+          [image]="product.image"
+          [title]="product.title"
+          [price]="product.price"
+          [originalPrice]="product.originalPrice"
+          [rating]="product.rating"
+          [isFavorite]="product.isFavorite">
+        </app-product-card>
+      </div>
+      
+      <div class="promotional-banner" *ngIf="i === 7">
+        <div class="banner-content">
+          <img src="assets/images/banners/banner-products.png" alt="DEYAC Cooling Systems">
+        </div>
+      </div>
+    </ng-container>
   </div>
 
   <div class="loader-container" *ngIf="isLoading">
