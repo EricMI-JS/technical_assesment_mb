@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthRoutingModule } from './auth-routing.module';
 import { PrimeNGModule } from '../../shared/prime-ng/prime-ng.module';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PrimeNGModule } from '../../shared/prime-ng/prime-ng.module';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    PrimeNGModule
+    PrimeNGModule,
+    ToastModule
   ],
   providers: [AuthService]
 })

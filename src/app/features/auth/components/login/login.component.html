@@ -42,7 +42,9 @@
                 <label>Recuerdame</label>
             </div>
 
-            <button pButton type="submit" class="primary-button">Iniciar sesión</button>
+            <button pButton type="submit" class="primary-button" [loading]="loading" [disabled]="loading || !loginForm.valid">
+                Iniciar sesión
+            </button>
             <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
         </form>
 
@@ -72,3 +74,5 @@
 
 
 </div>
+
+<p-toast></p-toast>
