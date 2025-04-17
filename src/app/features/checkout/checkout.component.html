@@ -85,7 +85,7 @@
             </div>
 
             <div class="form-field">
-              <input type="text" pInputText formControlName="extNumber" placeholder="Número exterior"
+              <input type="number" pInputText formControlName="extNumber" placeholder="Número exterior"
                 [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.extNumber')?.touched && checkoutForm.get('shipping.extNumber')?.invalid}">
               <small
                 *ngIf="checkoutForm.get('shipping.extNumber')?.touched && checkoutForm.get('shipping.extNumber')?.invalid"
@@ -95,7 +95,7 @@
             </div>
 
             <div class="form-field">
-              <input type="text" pInputText formControlName="intNumber" placeholder="Número interior">
+              <input type="number" pInputText formControlName="intNumber" placeholder="Número interior">
             </div>
           </div>
 
@@ -111,7 +111,7 @@
             </div>
 
             <div class="form-field">
-              <input type="text" pInputText formControlName="zipCode" placeholder="Código postal"
+              <input type="number" pInputText formControlName="zipCode" placeholder="Código postal"
                 [ngClass]="{'ng-invalid ng-dirty': checkoutForm.get('shipping.zipCode')?.touched && checkoutForm.get('shipping.zipCode')?.invalid}">
               <small
                 *ngIf="checkoutForm.get('shipping.zipCode')?.touched && checkoutForm.get('shipping.zipCode')?.invalid"

@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimeNGModule } from '../../shared/prime-ng/prime-ng.module';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { CheckoutComponent } from './checkout.component';
 
 const routes: Routes = [
@@ -21,7 +22,12 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    PrimeNGModule
-  ]
+    PrimeNGModule,
+    DynamicDialogModule,
+  ],
+  exports: [
+    CheckoutComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CheckoutModule { } 

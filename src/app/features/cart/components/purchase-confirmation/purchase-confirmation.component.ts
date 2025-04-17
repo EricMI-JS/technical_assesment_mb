@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface OrderItem {
   id: string;
@@ -40,16 +41,15 @@ export class PurchaseConfirmationComponent implements OnInit {
   @Output() visibleChange = new EventEmitter<boolean>();
   @Output() continueShopping = new EventEmitter<void>();
   
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
   }
   
   hideModal(): void {
-    this.visible = false;
-    this.visibleChange.emit(this.visible);
   }
   
   continueShoppingClick(): void {
-    this.continueShopping.emit();
-    this.hideModal();
+    this.router.navigate(['/']);
   }
 } 

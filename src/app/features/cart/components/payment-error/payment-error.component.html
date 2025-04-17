@@ -1,42 +1,25 @@
-<p-dialog 
-  [(visible)]="visible" 
-  [modal]="true" 
-  [draggable]="false" 
-  [resizable]="false"
-  [style]="{width: '95%', maxWidth: '400px'}"
-  [showHeader]="false"
-  [closable]="false"
-  [closeOnEscape]="false"
-  [baseZIndex]="1000"
-  styleClass="payment-error-dialog">
-  
-  <div class="payment-error">
-    <div class="error-header">
-      <button class="close-button" (click)="hideModal()">
-        <i class="pi pi-times"></i>
-      </button>
+<div class="payment-error">
+  <div class="error-header">
+    <button class="close-button" (click)="hideModal()">
+      <i class="pi pi-times"></i>
+    </button>
+  </div>
+
+  <div class="error-content">
+    <div class="error-message">
+      <h2 class="error-title">Lo sentimos no pudimos procesar tu pago</h2>
+      <p class="error-description">Intenta nuevamente o consulta con tu banco</p>
     </div>
 
-    <div class="error-content">
-      <div class="error-message">
-        <h2 class="error-title">Lo sentimos no pudimos procesar tu pago</h2>
-        <p class="error-description">Intenta nuevamente o consulta con tu banco</p>
+    <div class="error-icon">
+      <div class="icon-circle">
+        <img src="assets/icons/error.svg" alt="Payment Error Icon">
       </div>
-
-      <div class="error-icon">
-        <div class="icon-circle">
-          <img src="assets/icons/error.svg" alt="Payment Error Icon">
-        </div>
-      </div>
-    </div>
-
-    <div class="error-actions">
-      <button 
-        pButton 
-        class="retry-button" 
-        label="Reintentar" 
-        (click)="retryPayment()">
-      </button>
     </div>
   </div>
-</p-dialog> 
+
+  <div class="error-actions">
+    <button pButton class="retry-button" label="Reintentar" (click)="retryPayment()">
+    </button>
+  </div>
+</div>
