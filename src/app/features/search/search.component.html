@@ -94,12 +94,20 @@
         </div>
       </div>
 
-      <app-search-products-grid *ngIf="viewMode === 'grid'" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
+      <div *ngIf="!products.length && !isLoading" class="no-results-message">
+        <div class="message-container">
+          <i class="pi pi-search" style="font-size: 3rem; color: #999;"></i>
+          <h2>No se encontraron resultados</h2>
+          <p>Intenta con otros términos de búsqueda o navega por nuestras categorías</p>
+        </div>
+      </div>
+
+      <app-search-products-grid *ngIf="viewMode === 'grid' && products.length > 0" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
         [officialStores]="officialStores" [selectedBrand]="selectedBrand" [itemsPerRow]="4" [products]="products" [isLoading]="isLoading"
         [filteredProducts]="getFilteredProducts()">
       </app-search-products-grid>
 
-      <app-search-products-list *ngIf="viewMode === 'list'" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
+      <app-search-products-list *ngIf="viewMode === 'list' " [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
         [officialStores]="officialStores" [selectedBrand]="selectedBrand" [products]="products" [filteredProducts]="getFilteredProducts()">
       </app-search-products-list>
     </main>

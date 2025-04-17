@@ -57,6 +57,34 @@
       .sort-bar {
         display: none;
       }
+
+      .no-results-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 400px;
+        background-color: #ffffff;
+        border-radius: 0.8rem;
+        padding: 2rem;
+        margin: 2rem 0;
+
+        .message-container {
+          text-align: center;
+          
+          h2 {
+            font-size: 2rem;
+            color: #333;
+            margin: 1.6rem 0;
+            font-weight: 500;
+          }
+
+          p {
+            font-size: 1.4rem;
+            color: #666;
+            margin: 0;
+          }
+        }
+      }
     }
   }
 
