@@ -249,3 +249,56 @@
     }
   }
 }
+
+.auth-section {
+  display: flex;
+  align-items: center;
+
+  .user-email {
+    color: var(--text-color);
+    font-size: 0.9rem;
+  }
+
+  .profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+
+  .logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-color);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    i {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.right-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+}

@@ -42,9 +42,16 @@
           <span class="cart-badge" *ngIf="cartItemCount > 0">{{cartItemCount}}</span>
         </button>
 
-        <button class="profile-button" (click)="goToProfile()">
-          <img src="assets/images/user-profile.png" alt="Perfil">
-        </button>
+        <div class="auth-section">
+          <ng-container *ngIf="isAuthenticated">
+            <button class="profile-button" (click)="goToProfile()">
+              <img src="assets/images/user-profile.png" alt="Perfil">
+            </button>
+            <button class="logout-button" (click)="logout()">
+              <i class="pi pi-sign-out"></i>
+            </button>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>
@@ -80,7 +87,12 @@
         <div class="right-menu">
           <ul>
             <li>
-              <a [routerLink]="'/login'" routerLinkActive="active">Ingresar</a>
+              <ng-container *ngIf="!isAuthenticated">
+                <a [routerLink]="'/login'" routerLinkActive="active">Ingresar</a>
+              </ng-container>
+              <ng-container *ngIf="isAuthenticated">
+                <span class="user-email">{{ userEmail }}</span>
+              </ng-container>
             </li>
           </ul>
         </div>

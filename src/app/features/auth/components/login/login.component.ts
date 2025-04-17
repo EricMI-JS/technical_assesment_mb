@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
-import { lastValueFrom } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +12,8 @@ import { lastValueFrom } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  showPassword: boolean = false;
-  loading: boolean = false;
+  loading = false;
+  showPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -23,42 +22,59 @@ export class LoginComponent implements OnInit {
     private messageService: MessageService
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       rememberMe: [false]
     });
   }
 
-  ngOnInit(): void { }
-
-  togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
+  ngOnInit(): void {
+    // Si el usuario ya está autenticado, redirigir al home
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
   }
 
-  async onSubmit(): Promise<void> {
+  async onSubmit() {
     if (this.loginForm.valid) {
       this.loading = true;
-      const { email, password } = this.loginForm.value;
-      
       try {
-        const response = await lastValueFrom(this.authService.login(email, password));
-        console.log('response', response);
+        const { email, password } = this.loginForm.value;
+        await this.authService.login(email, password);
         this.messageService.add({
           severity: 'success',
           summary: 'Éxito',
           detail: 'Inicio de sesión exitoso'
         });
-        this.router.navigate(['/inicio']);
-      } catch (error) {
-        console.log('error', error);
+        this.router.navigate(['/']);
+      } catch (error: any) {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'Credenciales inválidas'
+          detail: this.getErrorMessage(error.code)
         });
       } finally {
         this.loading = false;
       }
+    }
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  private getErrorMessage(errorCode: string): string {
+    switch (errorCode) {
+      case 'auth/user-not-found':
+        return 'No existe una cuenta con este correo electrónico';
+      case 'auth/wrong-password':
+        return 'Contraseña incorrecta';
+      case 'auth/invalid-email':
+        return 'Correo electrónico inválido';
+      case 'auth/too-many-requests':
+        return 'Demasiados intentos fallidos. Por favor, intente más tarde';
+      default:
+        return 'Error al iniciar sesión. Por favor, intente nuevamente';
     }
   }
 } 

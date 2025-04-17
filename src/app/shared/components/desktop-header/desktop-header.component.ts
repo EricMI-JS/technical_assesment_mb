@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { CartService } from '../../../core/services/cart.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/features/auth/services/auth.service';
 
 interface CarInfo {
   brand: string;
@@ -40,15 +41,23 @@ export class DesktopHeaderComponent implements OnInit, OnDestroy {
 
   cartItemCount: number = 0;
   private cartSubscription?: Subscription;
+  isAuthenticated = false;
+  userEmail: string | null = null;
 
   constructor(
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
       this.cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+    });
+
+    this.authService.user$.subscribe(user => {
+      this.isAuthenticated = !!user;
+      this.userEmail = user?.email || null;
     });
   }
 
@@ -79,7 +88,11 @@ export class DesktopHeaderComponent implements OnInit, OnDestroy {
   }
   
   goToProfile(): void {
-    this.router.navigate(['/perfil']);
+    if (this.isAuthenticated) {
+      this.router.navigate(['/perfil']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
   
   goToNotifications(): void {
@@ -88,5 +101,9 @@ export class DesktopHeaderComponent implements OnInit, OnDestroy {
   
   goToHome(): void {
     this.router.navigate(['/inicio']);
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 } 
