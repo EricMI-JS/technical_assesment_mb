@@ -1,4 +1,5 @@
 <div class="brand-registration-container">
+  <p-toast></p-toast>
   <div class="brand-registration-content">
     <h1 class="title">
       Hola, te pedimos algunos datos para crear una cuenta de marca
@@ -44,6 +45,9 @@
                   (change)="onFileSelected($event, 'csf')"
                 >
               </div>
+              <div class="file-name" *ngIf="csfFileName">
+                {{ csfFileName }}
+              </div>
             </div>
           </div>
           
@@ -58,6 +62,9 @@
                   class="file-input" 
                   (change)="onFileSelected($event, 'officialId')"
                 >
+              </div>
+              <div class="file-name" *ngIf="officialIdFileName">
+                {{ officialIdFileName }}
               </div>
             </div>
           </div>

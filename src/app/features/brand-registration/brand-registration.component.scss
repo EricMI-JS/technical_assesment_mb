@@ -133,6 +133,13 @@
       cursor: pointer;
     }
   }
+
+  .file-name {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: #666;
+    word-break: break-all;
+  }
 }
 
 .consent-section {
