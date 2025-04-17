@@ -11,7 +11,10 @@ export class CategoriesFacade {
   categories$ = this.categoriesSubject.asObservable();
   private defaultImages = [
     'assets/images/categories/frenos.png',
-    'assets/images/categories/llanta.png'
+    'assets/images/categories/llanta.png',
+    'assets/images/categories/asientos.png',
+    'assets/images/categories/rines.png',
+    'assets/images/categories/baterias.png'
   ];
 
   constructor(private categoriesService: CategoriesService) {}

@@ -102,12 +102,12 @@
         </div>
       </div>
 
-      <app-search-products-grid *ngIf="viewMode === 'grid' && products.length > 0" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
+      <app-search-products-grid *ngIf="viewMode === 'grid'" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
         [officialStores]="officialStores" [selectedBrand]="selectedBrand" [itemsPerRow]="4" [products]="products" [isLoading]="isLoading"
         [filteredProducts]="getFilteredProducts()">
       </app-search-products-grid>
 
-      <app-search-products-list *ngIf="viewMode === 'list' " [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
+      <app-search-products-list *ngIf="viewMode === 'list'" [nextDayDelivery]="nextDayDelivery" [freeShipping]="freeShipping"
         [officialStores]="officialStores" [selectedBrand]="selectedBrand" [products]="products" [filteredProducts]="getFilteredProducts()">
       </app-search-products-list>
     </main>
